@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_063807) do
+ActiveRecord::Schema.define(version: 2021_05_20_224823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address_line1"
+    t.string "address_line2"
+    t.string "suburb"
+    t.integer "state"
+    t.integer "postcode"
+    t.bigint "stockist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stockist_id"], name: "index_addresses_on_stockist_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -23,6 +35,16 @@ ActiveRecord::Schema.define(version: 2021_05_20_063807) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "stockists", force: :cascade do |t|
+    t.string "business_name"
+    t.integer "abn"
+    t.boolean "verified"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_stockists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,4 +69,6 @@ ActiveRecord::Schema.define(version: 2021_05_20_063807) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "addresses", "stockists"
+  add_foreign_key "stockists", "users"
 end
