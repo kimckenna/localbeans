@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'reservations/index'
+  get 'reservations/show'
+  # creates all - GET POST PATCH PUT DELETE index create new edit show update destroy 
+  resources :listings
   get 'profiles/user'
   get 'profiles/stockist'
   #get 'home/index'
