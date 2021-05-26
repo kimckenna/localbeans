@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_224823) do
+ActiveRecord::Schema.define(version: 2021_05_26_055140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,37 @@ ActiveRecord::Schema.define(version: 2021_05_20_224823) do
     t.index ["stockist_id"], name: "index_addresses_on_stockist_id"
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string "name"
+    t.string "origin"
+    t.text "flavour_profile"
+    t.integer "bean_type"
+    t.integer "bean_grind"
+    t.bigint "stockist_id", null: false
+    t.bigint "brand_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_listings_on_brand_id"
+    t.index ["stockist_id"], name: "index_listings_on_stockist_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "quantity"
+    t.decimal "total_price", precision: 8, scale: 2
+    t.bigint "size_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["size_id"], name: "index_reservations_on_size_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -35,6 +66,16 @@ ActiveRecord::Schema.define(version: 2021_05_20_224823) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.integer "size"
+    t.decimal "price", precision: 8, scale: 2
+    t.boolean "active"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_sizes_on_listing_id"
   end
 
   create_table "stockists", force: :cascade do |t|
@@ -70,5 +111,10 @@ ActiveRecord::Schema.define(version: 2021_05_20_224823) do
   end
 
   add_foreign_key "addresses", "stockists"
+  add_foreign_key "listings", "brands"
+  add_foreign_key "listings", "stockists"
+  add_foreign_key "reservations", "sizes"
+  add_foreign_key "reservations", "users"
+  add_foreign_key "sizes", "listings"
   add_foreign_key "stockists", "users"
 end

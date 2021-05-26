@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  origin: MyString
+  flavour_profile: MyText
+  bean_type: 1
+  bean_grind: 1
+  stockist: one
+  brand: one
+
+two:
+  name: MyString
+  origin: MyString
+  flavour_profile: MyText
+  bean_type: 1
+  bean_grind: 1
+  stockist: two
+  brand: two
