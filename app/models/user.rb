@@ -5,5 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :stockist
-  validates :first_name, :last_name, presence: true, format: {with: /\A\w+\z/, message: 'Name can only include alphanumeric characters'}
+  has_many :reservations
+  validates :first_name, :last_name, presence: true, length: { minimum: 2 }, format: {with: /\A\w+\z/, message: 'Name can only include alphanumeric characters'}
 end

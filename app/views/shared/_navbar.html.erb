@@ -1,6 +1,6 @@
 <nav>
 	<%= link_to "Home", root_path %>
-	<%= "Available Beans"%>
+	<%= link_to "Beans", listings_path%>
 	<% if user_signed_in? %>
 	<span class="firstname"> <%= link_to "#{current_user.first_name}", profiles_user_path %> </span>
 	<%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
