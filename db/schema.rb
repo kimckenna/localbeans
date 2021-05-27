@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_125505) do
+ActiveRecord::Schema.define(version: 2021_05_27_052435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,19 @@ ActiveRecord::Schema.define(version: 2021_05_26_125505) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "grinds", force: :cascade do |t|
+    t.integer "bean_grind"
+    t.bigint "listing_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["listing_id"], name: "index_grinds_on_listing_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "name"
     t.string "origin"
     t.text "flavour_profile"
     t.integer "bean_type"
-    t.integer "bean_grind"
     t.bigint "stockist_id", null: false
     t.bigint "brand_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -56,6 +63,8 @@ ActiveRecord::Schema.define(version: 2021_05_26_125505) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "grind_id", null: false
+    t.index ["grind_id"], name: "index_reservations_on_grind_id"
     t.index ["size_id"], name: "index_reservations_on_size_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
@@ -113,8 +122,10 @@ ActiveRecord::Schema.define(version: 2021_05_26_125505) do
   end
 
   add_foreign_key "addresses", "stockists"
+  add_foreign_key "grinds", "listings"
   add_foreign_key "listings", "brands"
   add_foreign_key "listings", "stockists"
+  add_foreign_key "reservations", "grinds"
   add_foreign_key "reservations", "sizes"
   add_foreign_key "reservations", "users"
   add_foreign_key "sizes", "listings"
