@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_one :stockist
-  has_many :reservations
+  has_one :stockist, dependent: :destroy
+  has_many :reservations, dependent: :destroy
   validates :first_name, :last_name, presence: true, length: { minimum: 2 }, format: {with: /\A\w+\z/, message: 'Name can only include alphanumeric characters'}
 end

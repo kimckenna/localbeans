@@ -60,3 +60,5 @@ gem "cancancan", "~> 3.2"
 gem "rolify", "~> 6.0"
 
 gem 'simple_form'
+
+gem "faker", "~> 2.18"

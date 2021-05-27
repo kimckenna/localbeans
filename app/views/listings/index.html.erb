@@ -1,2 +1,8 @@
-<h1>Listings#index</h1>
-<p>Find me in app/views/listings/index.html.erb</p>
+<h1>Beans</h1>
+
+<ul>
+	<% @listing.each do |listing| %>
+		<li><%= listing.name %></li>
+	<% end %>
+</ul>
+
