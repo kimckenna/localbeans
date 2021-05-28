@@ -86,6 +86,7 @@ puts "Populating Brands"
 	brand = Brand.create(name: "Coffee Brand #{i}")
 end
 
+brand1 = Brand.first 
 10.times do
 	listing = stockist1.listings.create!(
 		name: Faker::Coffee.blend_name,
@@ -93,9 +94,14 @@ end
 		flavour_profile: Faker::Coffee.notes,
 		bean_type: 'Single Origin',
 		description: 'blahhhhhhhhhh',
+		brand: brand1
 	)
 	grind = listing.grinds.create!(
-		bean_grind: 'Whole Beans',
+		bean_grind: 'Whole Beans'
+	)
+	size = listing.sizes.create!(
+		size: 250,
+		price: rand(15..40)
 	)
 end
 
