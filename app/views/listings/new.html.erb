@@ -1,2 +1,30 @@
-<h1>Listings#new</h1>
-<p>Find me in app/views/listings/new.html.erb</p>
+<h1>New Beans</h1>
+
+<%= simple_form_for(@listing) do |f| %>
+
+<div class="form-inputs">
+	<%= f.simple_fields_for(@brand) do |f| %>
+    <%= f.input :brand %>
+  <% end %>
+  <%= f.input :name %>
+  <%= f.input :origin %>
+  <%= f.input :flavour_profile, as: :text %>
+	<%= f.input :description, as: :text %>
+  <%= f.input :bean_type, as: :radio_buttons, collection: ['Single Origin', 'Mix Blend', 'Decaf'], wrapper: :vertical_collection_inline %>
+	<%= f.input :roast %>
+	<%= f.simple_fields_for :grinds do |f| %>
+    <%= f.input :bean_grind, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
+  <% end %>
+	<%= f.simple_fields_for :sizes do |f| %>
+    <%= f.input :price %>
+	<% end %>
+</div>
+
+<div>
+  <%= f.button :submit, 'Save', class: 'btn btn-primary' %>
+
+</div>
+
+<% end %>
+
+

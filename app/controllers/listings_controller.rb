@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :autheticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     @listing = Listing.includes(:sizes).where(sizes: {active: TRUE})
@@ -16,10 +16,18 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @brand = Brand.new
+    @size = Size.new
+    @grind = Grind.new
+    @listing.build_brand
+    # @listing.build_sizes
+    # @listing.build_grinds
+
+
   end
 
   def create
-    @listing = current_user.listings.create()
+    @listing = current_user.listing.create()
   end
 
   def edit
@@ -27,5 +35,11 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+  end
+
+  private
+ 
+  def  listing_params
+    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, brand_attributes: [:brand])
   end
 end

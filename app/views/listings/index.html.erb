@@ -6,15 +6,15 @@
 		<% listing.sizes.each do |size| %>
 			<% unless displayed_listing.include?(listing.id) %>
 				<li><%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%></li>
-				<li><%= listing.name %> </li>
-				<li><%= "Min: $#{size.price}"%></li>
+				<li><%= link_to listing.name, listing %> </li>
+				<li>Min: <%= number_to_currency(size.price)%></li>
 				<% displayed_listing << listing.id %>
 			<% end %>
 		<% end %>
 	<% end %>
 </ul>
 
-Listing.includes(:sizes).where(sizes: {active: TRUE})
+
 
 
 

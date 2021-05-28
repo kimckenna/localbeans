@@ -6,4 +6,5 @@ class ProfilesController < ApplicationController
 
   def stockist
   end
+
 end

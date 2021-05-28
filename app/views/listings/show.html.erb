@@ -1,2 +1,8 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<h1><%= @listing.name %></h1>
+<ul>
+<li>Brand: <%= @listing.brand.name %></li>
+<li>Origin: <%= @listing.origin %></li>
+<li>Type: <%= @listing.bean_type %></li>
+<li>Flavour Profile: <%= @listing.flavour_profile %></li>
+</ul>
+
