@@ -1,8 +1,20 @@
 <h1>Beans</h1>
 
 <ul>
+	<% displayed_listing = [] %>
 	<% @listing.each do |listing| %>
-		<li><%= listing.name %></li>
+		<% listing.sizes.each do |size| %>
+			<% unless displayed_listing.include?(listing.id) %>
+				<li><%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%></li>
+				<li><%= listing.name %> </li>
+				<li><%= "Min: $#{size.price}"%></li>
+				<% displayed_listing << listing.id %>
+			<% end %>
+		<% end %>
 	<% end %>
 </ul>
+
+Listing.includes(:sizes).where(sizes: {active: TRUE})
+
+
 

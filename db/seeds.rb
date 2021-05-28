@@ -80,7 +80,7 @@ puts "Addresses populated"
 # 	)
 # )
 
-puts "Populating Brands"
+puts "Populating Listings attached to stockist 1 & brand 1"
 
 4.times do |i|
 	brand = Brand.create(name: "Coffee Brand #{i}")
@@ -101,11 +101,17 @@ brand1 = Brand.first
 	)
 	size = listing.sizes.create!(
 		size: 250,
-		price: rand(15..40)
+		price: rand(15..40),
+		active: TRUE
+	)
+	size = listing.sizes.create!(
+		size: 500,
+		price: rand(50..70),
+		active: TRUE
 	)
 end
 
-puts "Brand Populated"
+puts "Listing Populated"
 
 
 # Faker::Coffee.blend_name #=> "Summer Solstice"
