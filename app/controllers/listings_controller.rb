@@ -22,12 +22,15 @@ class ListingsController < ApplicationController
     @listing.build_brand
     # @listing.build_sizes
     # @listing.build_grinds
-
-
   end
 
   def create
-    @listing = current_user.listing.create()
+    @listing = current_user.stockist.listings.new(listing_params)
+    if @listing.save
+      redirect_to @listing 
+    else
+      render :new 
+    end
   end
 
   def edit
@@ -40,6 +43,6 @@ class ListingsController < ApplicationController
   private
  
   def  listing_params
-    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, brand_attributes: [:brand],grind_attributes:[:bean_grind], size_attributes: [:size, :price])
+    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, brand_attributes: [:brand],grind_attributes: [:bean_grind], size_attributes: [:size, :price])
   end
 end
