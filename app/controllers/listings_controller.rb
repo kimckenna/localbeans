@@ -16,16 +16,18 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    @brand = Brand.new
-    @size = Size.new
-    @grind = Grind.new
+    # @brand = Brand.new
+    # @size = Size.new
+    # @grind = Grind.new
     @listing.build_brand
     # @listing.build_sizes
     # @listing.build_grinds
+    #@possibility = Possibility.find_by_id(params[:possibility_id])
   end
 
   def create
     @listing = current_user.stockist.listings.new(listing_params)
+    #@brand = Brand.new
     if @listing.save
       redirect_to @listing 
     else
@@ -43,6 +45,7 @@ class ListingsController < ApplicationController
   private
  
   def  listing_params
-    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, brand_attributes: [:brand],grind_attributes: [:bean_grind], size_attributes: [:size, :price])
+    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, brand_attributes: [:brand],grinds_attributes: [:bean_grind], sizes_attributes: [:size, :price])
   end
+
 end
