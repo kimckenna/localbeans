@@ -49,13 +49,15 @@ body{
 	margin: 0 auto !important
 }
 
-h1{
+h1, h3{
 	font-family: 'porter_sans_blockblock'; //$logo-font
 	color: #726E6B; //$text-color
+	text-align: end;
 }
 
 a, a:visited, a:active{
-	font-family: 'Oxygen Mono', sans-serif;
+	font-family: 'Darker Grotesque', sans-serif;
+	font-size: 20px;
 	text-decoration: none;
 	color: #726E6B;
 }

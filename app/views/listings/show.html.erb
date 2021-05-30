@@ -1,8 +1,22 @@
-<h1><%= @listing.name %></h1>
-<ul>
-<li>Brand: <%= @listing.brand.brand %></li>
-<li>Origin: <%= @listing.origin %></li>
-<li>Type: <%= @listing.bean_type %></li>
-<li>Flavour Profile: <%= @listing.flavour_profile %></li>
-</ul>
+<article class="show-listing-container">
+
+<div class="card mb-3 border-0" style="max-width: 540px; background-color: #F3EBDF;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="..." class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+				<h3 class="card-title title"><%= @listing.name %></h3>
+        <ul class="card-text">
+					<li class="brand"><h5><%= @listing.brand.brand %></h5></li>
+					<li>Origin: <%= @listing.origin %></li>
+					<li>Type: <%= @listing.bean_type %></li>
+					<li>Flavour Profile: <%= @listing.flavour_profile %></li>
+				</ul>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
 

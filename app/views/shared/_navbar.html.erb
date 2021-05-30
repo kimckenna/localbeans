@@ -1,7 +1,7 @@
-<nav class="navbar navbar-light" style="background-color: #FFFBF8;">
+<nav class="navbar navbar-light">
   <div class="container-fluid">
     <div class="nav">
-			<a class="nav_link localbeans"> <%= link_to "Local Beans", root_path %> </a>
+			<a class="nav_link localbeans"> <h3><%= link_to "Local Beans", root_path %> </h3></a>
 				<a class="nav_link custom_nav_link"> <%= link_to "Beans", listings_path %> </a>
 				<% if user_signed_in? %>
 				<a class="nav_link custom_nav_link firstname"> <%= link_to "#{current_user.first_name.capitalize}", profiles_user_path %> </a>

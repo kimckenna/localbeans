@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// LISTINGS
 .title-container{
 	max-height: 300px;
 	height:10rem;
@@ -20,7 +21,7 @@
 }
 
 .card{
-	text-align: center;
+	// text-align: center;
 	margin: 1rem auto;
 }
 
@@ -33,4 +34,15 @@
 .listing-container{
 	max-width: 1000px;
 	margin: auto;
+}
+
+// SHOW
+.show-listing-container{
+	max-height: 1000px;
+	height:25rem;
+	margin: auto;
+	.show-listing-wrapper{
+		max-width: 1000px;
+		margin: 0 auto;
+	}
 }

@@ -11,7 +11,7 @@
 			<% listing.sizes.each do |size| %>
 				<% unless displayed_listing.include?(listing.id) %>
 					<div class="col-sm-4 cards-wrap h-100 d-table">
-						<div class="card align-middle" style="width: 18rem;">
+						<div class="card border-0 align-middle" style="width: 18rem; background-color: #F8F6F3">
 							<img src="..." class="card-img-top" alt="...">
 							<div class="card-body">
 								<h5><%= link_to listing.name, listing %> </h5>
