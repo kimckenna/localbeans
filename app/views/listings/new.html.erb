@@ -20,13 +20,13 @@
     <%= f.input :origin %>
     <%= f.input :flavour_profile, as: :text %>
     <%= f.input :description, as: :text %>
-    <%= f.input :bean_type, as: :radio_buttons, collection: ['Single Origin', 'Mix Blend', 'Decaf'], wrapper: :vertical_collection_inline %>
+    <%= f.input :bean_type, as: :radio_buttons, collection: ['Single Origin', 'Mix Blend', 'Decaf'], wrapper: :vertical_collection_inline, class: 'custom-control-input' %>
     <%= f.input :roast %>
 
     <#%= f.association :grinds, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
     <div class="checkbox-info">
     <%= f.simple_fields_for :grinds do |grind_form| %>
-      <%= grind_form.input :bean_grind, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
+      <%= grind_form.input :bean_grind, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline, class: 'custom-control-input' %>
     <% end %> 
     </div>
 

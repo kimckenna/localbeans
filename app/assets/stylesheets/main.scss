@@ -87,3 +87,17 @@ li{
 .btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
 	background-color: #AEFFB6 !important;
 }
+
+.was-validated .form-control:valid, .form-control.is-valid {
+	border-color: #AEFFB6 !important;
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalid{
+	border-color: #FF636C !important;
+}
+
+.alert-danger {
+	color: #a5010a;
+	background-color: #f8d7da;
+	border-color: #FF636C;
+}
