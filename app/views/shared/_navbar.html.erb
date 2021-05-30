@@ -1,10 +1,14 @@
-<nav>
-	<%= link_to "Home", root_path %>
-	<%= link_to "Beans", listings_path%>
-	<% if user_signed_in? %>
-	<span class="firstname"> <%= link_to "#{current_user.first_name}", profiles_user_path %> </span>
-	<%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
-	<% else %>
-	<%= link_to "Sign In", new_user_session_path %>
-	<%end%>
+<nav class="navbar navbar-light" style="background-color: #FFFBF8;">
+  <div class="container-fluid">
+    <div class="nav">
+			<a class="nav_link localbeans"> <%= link_to "Local Beans", root_path %> </a>
+				<a class="nav_link custom_nav_link"> <%= link_to "Beans", listings_path %> </a>
+				<% if user_signed_in? %>
+				<a class="nav_link custom_nav_link firstname"> <%= link_to "#{current_user.first_name.capitalize}", profiles_user_path %> </a>
+				<a class="nav_link custom_nav_link"> <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %> </a>
+					<% else %>
+				<a class="nav_link custom_nav_link"> <%= link_to "Sign In", new_user_session_path %> </a>
+			<%end%>
+    </div>
+  </div>
 </nav>

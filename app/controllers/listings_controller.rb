@@ -48,7 +48,7 @@ class ListingsController < ApplicationController
   private
  
   def  listing_params
-    params.require(:grind).permit(:bean_grind)
+    #params.require(:grind).permit(:bean_grind)
     params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, brand_attributes: [:id, :brand], grinds_attributes: [:id, :bean_grind], sizes_attributes: [:id, :size, :price])
   end
 

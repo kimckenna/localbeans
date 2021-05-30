@@ -1,20 +1,34 @@
-<h1>Beans</h1>
+<div class="title-container">
+	<div class='title-wrap'>
+		<h1 class="title">Beans</h1>
+	</div>
+</div>
 
-<ul>
-	<% displayed_listing = [] %>
-	<% @listing.each do |listing| %>
-		<% listing.sizes.each do |size| %>
-			<% unless displayed_listing.include?(listing.id) %>
-				<li><%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%></li>
-				<li><%= link_to listing.name, listing %> </li>
-				<li>Min: <%= number_to_currency(size.price)%></li>
-				<% displayed_listing << listing.id %>
+<div class="listing-container">
+	<div class="row h-50">
+		<% displayed_listing = [] %>
+		<% @listing.each do |listing| %>
+			<% listing.sizes.each do |size| %>
+				<% unless displayed_listing.include?(listing.id) %>
+					<div class="col-sm-4 cards-wrap h-100 d-table">
+						<div class="card align-middle" style="width: 18rem;">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5><%= link_to listing.name, listing %> </h5>
+								<div><%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%></div>
+								<div>Min: <%= number_to_currency(size.price)%></div>
+								<% displayed_listing << listing.id %>
+							</div>
+						</div>
+					</div>
+				<% end %>
 			<% end %>
 		<% end %>
-	<% end %>
-</ul>
+	</div>
+</div>
 
 
 
-
-
+		<%# <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a> %>

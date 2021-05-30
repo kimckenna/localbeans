@@ -1,1 +1,78 @@
-@import "./global"
+@import "./scss_stylesheets/global.scss";
+@import "./scss_stylesheets/fonts.scss";
+@import "./scss_stylesheets/variable.scss";
+@import "./scss_stylesheets/nav.scss";
+
+/*fonts*/
+$logo-font: 'porter_sans_blockblock';
+$font: 'Darker Grotesque';
+$title-font: 'Oxygen Mono';
+
+/*colours*/
+
+// $alert-color: #FF636C;
+// $text-color: #726E6B;
+// $button-color: #AEFFB6;
+// $primary-color: #F3EBDF;
+// $secondary-color: #F8F6F3;
+// $accent-color: #FFEFDD;
+// $light-color: #FFFBF8;
+
+// $primary: #726E6B;
+// $danger: #FF636C;
+
+// $theme-colors: (
+//   "primary":    $primary,
+//   "secondary":  $secondary,
+//   "success":    $success,
+//   "info":       $info,
+//   "warning":    $warning,
+//   "danger":     $danger,
+//   "light":      $light,
+//   "dark":       $dark
+// );
+
+// a, a:visited, a:active{
+// 	font-family: 'Oxygen Mono', sans-serif;
+// 	text-decoration: none;
+// 	color: #726E6B;
+// }
+// a:hover{
+// 	color: $button-color;
+// 	text-decoration: none !important;
+// }
+
+// GLOBAL
+
+body{
+	font-family: 'Darker Grotesque';
+	margin: 0 auto !important
+}
+
+h1{
+	font-family: 'porter_sans_blockblock'; //$logo-font
+	color: #726E6B; //$text-color
+}
+
+a, a:visited, a:active{
+	font-family: 'Oxygen Mono', sans-serif;
+	text-decoration: none;
+	color: #726E6B;
+}
+
+a:hover{
+	color: #AEFFB6;
+	text-decoration: none !important;
+}
+
+li{
+	list-style-type: none !important; 
+}
+
+// NAV
+
+
+// LISTINGS
+
+
+

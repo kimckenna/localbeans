@@ -10,9 +10,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= render "shared/navbar"%>
+    <div style="background-color: #FFFBF8;">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= render "shared/navbar"%>
+    </div>
     <%= yield %>
   </body>
 </html>
