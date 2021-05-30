@@ -7,6 +7,10 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      .form-control:focus{box-color: #AEFFB6; border-color: #AEFFB6; -webkit-box-shadow: none;} 
+      .has-error .form-control:focus{box-shadow: none; -webkit-box-shadow: none;}
+    </style>
   </head>
 
   <body>

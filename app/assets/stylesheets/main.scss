@@ -18,8 +18,12 @@ $title-font: 'Oxygen Mono';
 // $accent-color: #FFEFDD;
 // $light-color: #FFFBF8;
 
-// $primary: #726E6B;
+$primary: #AEFFB6;
 // $danger: #FF636C;
+
+$link-color: #AEFFB6;
+// $link-hover-color;
+// $gray-600;
 
 // $theme-colors: (
 //   "primary":    $primary,
@@ -46,7 +50,9 @@ $title-font: 'Oxygen Mono';
 
 body{
 	font-family: 'Darker Grotesque';
-	margin: 0 auto !important
+	margin: 0 auto !important;
+	background-color: #F3EBDF;
+	font-weight: 400;
 }
 
 h1, h3{
@@ -63,8 +69,10 @@ a, a:visited, a:active{
 }
 
 a:hover{
-	color: #AEFFB6;
+	color: #134563;
 	text-decoration: none !important;
+	font-size: 20px;
+	font-weight: 600;
 }
 
 li{
@@ -76,5 +84,6 @@ li{
 
 // LISTINGS
 
-
-
+.btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
+	background-color: #AEFFB6 !important;
+}

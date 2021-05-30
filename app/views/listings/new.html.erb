@@ -1,36 +1,44 @@
-<h1>New Beans</h1>
+<div class="title-container">
+	<div class='title-wrap'>
+		<h1 class="title">New Beans</h1>
+	</div>
+</div>
 
 
 #form re-do
-<%= simple_form_for(@listing) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<article class="form-container">
+  <%= simple_form_for(@listing) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<div class="form-inputs">
-	<%= f.simple_fields_for Brand.new do |brand_form| %>
-    <%= brand_form.input :brand %>
+  <div class="form-inputs">
+    <%= f.simple_fields_for Brand.new do |brand_form| %>
+      <%= brand_form.input :brand %>
+    <% end %>
+
+    <%= f.input :name %>
+    <%= f.input :origin %>
+    <%= f.input :flavour_profile, as: :text %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :bean_type, as: :radio_buttons, collection: ['Single Origin', 'Mix Blend', 'Decaf'], wrapper: :vertical_collection_inline %>
+    <%= f.input :roast %>
+
+    <#%= f.association :grinds, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
+    <div class="checkbox-info">
+    <%= f.simple_fields_for :grinds do |grind_form| %>
+      <%= grind_form.input :bean_grind, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
+    <% end %> 
+    </div>
+
+    <%= f.simple_fields_for :sizes do |size_form| %>
+      <%= size_form.input :size %>
+      <%= size_form.input :price %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.button :submit, 'Save', class: 'btn btn-light' %>
+  </div>
   <% end %>
+</article>
 
-  <%= f.input :name %>
-  <%= f.input :origin %>
-  <%= f.input :flavour_profile, as: :text %>
-	<%= f.input :description, as: :text %>
-  <%= f.input :bean_type, as: :radio_buttons, collection: ['Single Origin', 'Mix Blend', 'Decaf'], wrapper: :vertical_collection_inline %>
-	<%= f.input :roast %>
-
-  <#%= f.association :grinds, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
-	<%= f.simple_fields_for :grinds do |grind_form| %>
-    <%= grind_form.input :bean_grind, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
-  <% end %> 
-
-	<%= f.simple_fields_for :sizes do |size_form| %>
-    <%= size_form.input :size %>
-    <%= size_form.input :price %>
-	<% end %>
-</div>
-
-<div>
-  <%= f.button :submit, 'Save', class: 'btn btn-primary' %>
-
-</div>
-<% end %>
