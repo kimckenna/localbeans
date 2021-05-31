@@ -12,6 +12,19 @@ Stockist.destroy_all
 Address.destroy_all
 Listing.destroy_all
 Brand.destroy_all
+Grind.destroy_all
+
+puts "Populating Grinds"
+
+grinds_data = ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish']
+
+grinds_data.each do |grind|
+	Grind.create!(
+		bean_grind: "#{grind}"
+	)
+end
+
+puts "Grinds Populated"
 
 puts "Populating Users"
 
@@ -83,10 +96,13 @@ puts "Addresses populated"
 puts "Populating Listings attached to stockist 1 & brand 1"
 
 4.times do |i|
-	brand = Brand.create(name: "Coffee Brand #{i}")
+	brand = Brand.create(brand: "Coffee Brand #{i}")
 end
 
+
+
 brand1 = Brand.first 
+grind_select = Grind.all
 10.times do
 	listing = stockist1.listings.create!(
 		name: Faker::Coffee.blend_name,
@@ -96,15 +112,15 @@ brand1 = Brand.first
 		description: 'blahhhhhhhhhh',
 		brand: brand1
 	)
-	grind = listing.grinds.create!(
-		bean_grind: 'Whole Beans'
+	grind = listing.listing_grinds.create!(
+		grind: grind_select.sample
 	)
 	size = listing.sizes.create!(
 		size: 250,
 		price: rand(15..40),
 		active: TRUE
 	)
-	size = listing.sizes.create!(
+	price = listing.sizes.create!(
 		size: 500,
 		price: rand(50..70),
 		active: TRUE

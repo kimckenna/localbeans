@@ -23,12 +23,10 @@
     <%= f.input :bean_type, as: :radio_buttons, collection: ['Single Origin', 'Mix Blend', 'Decaf'], wrapper: :vertical_collection_inline, class: 'custom-control-input' %>
     <%= f.input :roast %>
 
-    <#%= f.association :grinds, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline %>
-    <div class="checkbox-info">
-    <%= f.simple_fields_for :grinds do |grind_form| %>
-      <%= grind_form.input :bean_grind, as: :check_boxes, collection: ['Whole Beans', 'Espresso', 'Stove Top', 'Cold Brew', 'Batch Brew', 'Plunger', 'Pour Over', 'French Press', 'Aero Press', 'Reusable Pods', 'Turkish'], wrapper: :vertical_collection_inline, class: 'custom-control-input' %>
-    <% end %> 
-    </div>
+    <%=f.collection_check_boxes :grind_ids, @grinds, :id, :bean_grind do |b|%>
+      <%=b.label(class: 'form-check-label')%>
+      <%=b.check_box(class:'form-check-line mr-2')%>
+    <%end%>
 
     <%= f.simple_fields_for :sizes do |size_form| %>
       <%= size_form.input :size %>

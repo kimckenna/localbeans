@@ -2,6 +2,8 @@
 @import "./scss_stylesheets/fonts.scss";
 @import "./scss_stylesheets/variable.scss";
 @import "./scss_stylesheets/nav.scss";
+@import "./scss_stylesheets/profiles.scss";
+@import "./scss_stylesheets/listings.scss";
 
 /*fonts*/
 $logo-font: 'porter_sans_blockblock';
@@ -55,7 +57,7 @@ body{
 	font-weight: 400;
 }
 
-h1, h3{
+h1, h2, h3{
 	font-family: 'porter_sans_blockblock'; //$logo-font
 	color: #726E6B; //$text-color
 	text-align: end;
@@ -69,7 +71,7 @@ a, a:visited, a:active{
 }
 
 a:hover{
-	color: #134563;
+	color: #726E6B;
 	text-decoration: none !important;
 	font-size: 20px;
 	font-weight: 600;
@@ -82,10 +84,16 @@ li{
 // NAV
 
 
-// LISTINGS
+// FORM
 
+// BUTTON
 .btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
 	background-color: #AEFFB6 !important;
+}
+
+// DELETE BUTTON
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
+	background-color: #FF636C !important;
 }
 
 .was-validated .form-control:valid, .form-control.is-valid {
@@ -95,7 +103,6 @@ li{
 .was-validated .form-control:invalid, .form-control.is-invalid{
 	border-color: #FF636C !important;
 }
-
 .alert-danger {
 	color: #a5010a;
 	background-color: #f8d7da;

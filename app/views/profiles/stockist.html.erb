@@ -1,15 +1,18 @@
-<h1> Profile</h1>
+<h1> <%= "#{current_user.stockist.business_name.capitalize}" %></h1>
+
 
 <ul>
 	<% displayed_listing = [] %>
 	<% @listing.each do |listing| %>
-		<% listing.sizes.each do |size| %>
-			<% unless displayed_listing.include?(listing.id) %>
-				<li><%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%></li>
-				<li><%= link_to listing.name, listing %> </li>
-				<li>Min: <%= number_to_currency(size.price)%></li>
-				<% displayed_listing << listing.id %>
+		<% if listing.stockist_id == current_user.id %>
+			<% listing.sizes.each do |size| %>
+				<% unless displayed_listing.include?(listing.id) %>
+					<li><%= listing.stockist.business_name %> | <%= stockist.addresses.first.suburb%></li>
+					<li><%= link_to listing.name, listing %> </li>
+					<li>Min: <%= number_to_currency(size.price)%></li>
+					<% displayed_listing << listing.id %>
+				<% end %>
 			<% end %>
-		<% end %>
+		<%end%>
 	<% end %>
 </ul>
