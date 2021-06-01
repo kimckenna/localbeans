@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_123048) do
+ActiveRecord::Schema.define(version: 2021_06_01_005451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2021_05_31_123048) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
     t.string "roast"
+    t.bigint "brand_id", null: false
+    t.index ["brand_id"], name: "index_listings_on_brand_id"
     t.index ["stockist_id"], name: "index_listings_on_stockist_id"
   end
 
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 2021_05_31_123048) do
   add_foreign_key "addresses", "stockists"
   add_foreign_key "listing_grinds", "grinds"
   add_foreign_key "listing_grinds", "listings"
+  add_foreign_key "listings", "brands"
   add_foreign_key "listings", "stockists"
   add_foreign_key "reservations", "grinds"
   add_foreign_key "reservations", "sizes"

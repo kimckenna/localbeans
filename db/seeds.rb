@@ -42,11 +42,27 @@ stockist1 = user1.create_stockist(
 	abn: '51824753551'
 )
 
-3.times do |i|
+puts "Stockist Populated"
+
+puts "Populating Brands"
+
+5.times do |i|
 	Brand.create!(
 		brand: "Coffee Brand #{i}"
 	)
 end
+
+puts "Brand Populated"
+
+puts "Populating Stockist Brands"
+
+2.times do 
+	stockist1.stockist_brands.create!( 
+		brand: Brand.all.sample
+	)
+end
+
+puts "Stockist Brands Populated"
 
 puts "Populating Addresses"
 
@@ -58,6 +74,50 @@ stockist1.addresses.create!(
 )
 
 puts "Addresses populated"
+
+puts "Populating Listings attached to stockist 1"
+
+#brand_select = stockist1.brands.all
+grind_select = Grind.all
+10.times do
+	brand = stockist1.brands.sample
+	listing = stockist1.listings.create!(
+		name: Faker::Coffee.blend_name,
+		origin: Faker::Coffee.origin,
+		flavour_profile: Faker::Coffee.notes,
+		bean_type: 'Single Origin',
+		description: 'blahhhhhhhhhh',
+		brand: brand,
+	)
+	grind = listing.listing_grinds.create!(
+		grind: grind_select.sample
+	)
+	size = listing.sizes.create!(
+		size: 250,
+		price: rand(15..40),
+		active: TRUE
+	)
+	price = listing.sizes.create!(
+		size: 500,
+		price: rand(50..70),
+		active: TRUE
+	)
+end
+
+puts "Listing Populated"
+
+# create_table "listings", force: :cascade do |t|
+# 	t.string "name"
+# 	t.string "origin"
+# 	t.text "flavour_profile"
+# 	t.integer "bean_type"
+# 	t.bigint "stockist_id", null: false
+# 	t.datetime "created_at", precision: 6, null: false
+# 	t.datetime "updated_at", precision: 6, null: false
+# 	t.text "description"
+# 	t.string "roast"
+
+
 # User.create(
 # 	first_name: 'Test',
 # 	last_name: 'Two',
@@ -98,54 +158,6 @@ puts "Addresses populated"
 # 		abn: '51824753555'
 # 	)
 # )
-
-puts "Populating Listings attached to stockist 1"
-
-
-
-
-brand_select = Brand.all
-grind_select = Grind.all
-10.times do
-	listing = stockist1.listings.create!(
-		name: Faker::Coffee.blend_name,
-		origin: Faker::Coffee.origin,
-		flavour_profile: Faker::Coffee.notes,
-		bean_type: 'Single Origin',
-		description: 'blahhhhhhhhhh',
-	)
-	grind = listing.listing_grinds.create!(
-		grind: grind_select.sample
-	)
-	size = listing.sizes.create!(
-		size: 250,
-		price: rand(15..40),
-		active: TRUE
-	)
-	price = listing.sizes.create!(
-		size: 500,
-		price: rand(50..70),
-		active: TRUE
-	)
-	brand_name = listing.stockist.stockist_brands.create!(
-		brand: brand_select.sample
-	)
-end
-
-puts "Listing Populated"
-
-# create_table "listings", force: :cascade do |t|
-# 	t.string "name"
-# 	t.string "origin"
-# 	t.text "flavour_profile"
-# 	t.integer "bean_type"
-# 	t.bigint "stockist_id", null: false
-# 	t.datetime "created_at", precision: 6, null: false
-# 	t.datetime "updated_at", precision: 6, null: false
-# 	t.text "description"
-# 	t.string "roast"
-
-
 
 # Faker::Coffee.blend_name #=> "Summer Solstice"
 

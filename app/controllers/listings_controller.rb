@@ -24,7 +24,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @brands = @listing.stockist.brand.all
+    @brands = @listing.stockist.brands.all
     @grinds = Grind.all
     @listing = current_user.stockist.listings.new(listing_params) 
     if @listing.save

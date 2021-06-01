@@ -17,10 +17,6 @@
       <%= a.input :state, as: :radio_buttons, collection: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA'], wrapper: :vertical_collection_inline, class: 'custom-control-input' %>
       <%= a.input :postcode %>
     <% end %>
-
-		<%= f.simple_fields_for :brands do |a| %>
-			<%= a.input :brand %>
-		<%end%>	
   </div>
 
   <div>

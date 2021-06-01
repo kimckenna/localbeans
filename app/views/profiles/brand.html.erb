@@ -1,0 +1,20 @@
+<h1> <%= "#{current_user.stockist.business_name.capitalize}'s Brands" %></h1>
+
+<div class="container-fluid">
+	<div class="buttons">
+		<button type="button" class="btn btn-light"> 
+			<%= link_to "Create Beans Brand", profiles_stockist_brand_new_path %> 
+		</button>
+	</div>
+</div>
+
+<article class ="stockist_existing_brands">
+	<h3>Stockist Brands</h3>
+	<ul class="existing_brands_list">
+		<% current_user.stockist.brands.each do |sb|%>
+			<li><%= "#{sb.brand}" %></li>
+		<%end%>
+	</ul>
+</article>
+
+
