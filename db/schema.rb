@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_054706) do
+ActiveRecord::Schema.define(version: 2021_05_31_123048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,10 @@ ActiveRecord::Schema.define(version: 2021_05_31_054706) do
     t.text "flavour_profile"
     t.integer "bean_type"
     t.bigint "stockist_id", null: false
-    t.bigint "brand_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
     t.string "roast"
-    t.index ["brand_id"], name: "index_listings_on_brand_id"
     t.index ["stockist_id"], name: "index_listings_on_stockist_id"
   end
 
@@ -94,6 +92,15 @@ ActiveRecord::Schema.define(version: 2021_05_31_054706) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["listing_id"], name: "index_sizes_on_listing_id"
+  end
+
+  create_table "stockist_brands", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.bigint "stockist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_stockist_brands_on_brand_id"
+    t.index ["stockist_id"], name: "index_stockist_brands_on_stockist_id"
   end
 
   create_table "stockists", force: :cascade do |t|
@@ -131,11 +138,12 @@ ActiveRecord::Schema.define(version: 2021_05_31_054706) do
   add_foreign_key "addresses", "stockists"
   add_foreign_key "listing_grinds", "grinds"
   add_foreign_key "listing_grinds", "listings"
-  add_foreign_key "listings", "brands"
   add_foreign_key "listings", "stockists"
   add_foreign_key "reservations", "grinds"
   add_foreign_key "reservations", "sizes"
   add_foreign_key "reservations", "users"
   add_foreign_key "sizes", "listings"
+  add_foreign_key "stockist_brands", "brands"
+  add_foreign_key "stockist_brands", "stockists"
   add_foreign_key "stockists", "users"
 end

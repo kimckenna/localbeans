@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
 	<div class="buttons">
-		<% if current_user.stockist.id.present? %>
+		<% if current_user.stockist.present? %>
 			<button type="button" class="btn btn-light"> 
 				<%= link_to "#{current_user.stockist.business_name.capitalize}", profiles_stockist_path %> 
 			</button>

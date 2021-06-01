@@ -12,9 +12,11 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.simple_fields_for Brand.new do |brand_form| %>
-      <%= brand_form.input :brand %>
-    <% end %>
+
+    <%=f.collection_check_boxes :brand_ids, @brands, :id, :brand do |b|%>
+      <%=b.label(class: 'form-check-label')%>
+      <%=b.check_box(class:'form-check-line mr-2')%>
+    <%end%>
 
     <%= f.input :name %>
     <%= f.input :origin %>

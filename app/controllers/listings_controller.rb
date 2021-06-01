@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    @brand = Brand.new
+    @brands = @listing.stockist.stockist_brands.all
     @grinds = Grind.all
     #@listing.grinds.build
     @listing.sizes.build
@@ -24,6 +24,7 @@ class ListingsController < ApplicationController
   end
 
   def create
+    @brands = @listing.stockist.brand.all
     @grinds = Grind.all
     @listing = current_user.stockist.listings.new(listing_params) 
     if @listing.save
@@ -44,7 +45,9 @@ class ListingsController < ApplicationController
  
   def  listing_params
     #params.require(:grind).permit(:bean_grind)
-    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, brand_attributes: [:id, :brand], sizes_attributes: [:id, :size, :price], grind_ids: [])
+    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price], brand_ids: [], grind_ids: [])
   end
+
+  # brand_attributes: [:id, :brand]
 
 end

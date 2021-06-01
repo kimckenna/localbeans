@@ -42,6 +42,12 @@ stockist1 = user1.create_stockist(
 	abn: '51824753551'
 )
 
+3.times do |i|
+	Brand.create!(
+		brand: "Coffee Brand #{i}"
+	)
+end
+
 puts "Populating Addresses"
 
 stockist1.addresses.create!(
@@ -93,15 +99,12 @@ puts "Addresses populated"
 # 	)
 # )
 
-puts "Populating Listings attached to stockist 1 & brand 1"
-
-4.times do |i|
-	brand = Brand.create(brand: "Coffee Brand #{i}")
-end
+puts "Populating Listings attached to stockist 1"
 
 
 
-brand1 = Brand.first 
+
+brand_select = Brand.all
 grind_select = Grind.all
 10.times do
 	listing = stockist1.listings.create!(
@@ -110,7 +113,6 @@ grind_select = Grind.all
 		flavour_profile: Faker::Coffee.notes,
 		bean_type: 'Single Origin',
 		description: 'blahhhhhhhhhh',
-		brand: brand1
 	)
 	grind = listing.listing_grinds.create!(
 		grind: grind_select.sample
@@ -125,9 +127,24 @@ grind_select = Grind.all
 		price: rand(50..70),
 		active: TRUE
 	)
+	brand_name = listing.stockist.stockist_brands.create!(
+		brand: brand_select.sample
+	)
 end
 
 puts "Listing Populated"
+
+# create_table "listings", force: :cascade do |t|
+# 	t.string "name"
+# 	t.string "origin"
+# 	t.text "flavour_profile"
+# 	t.integer "bean_type"
+# 	t.bigint "stockist_id", null: false
+# 	t.datetime "created_at", precision: 6, null: false
+# 	t.datetime "updated_at", precision: 6, null: false
+# 	t.text "description"
+# 	t.string "roast"
+
 
 
 # Faker::Coffee.blend_name #=> "Summer Solstice"

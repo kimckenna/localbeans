@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'profiles/user'
   get 'profiles/stockist'
 
-  get 'profiles/stockist/new'
+  get 'profiles/stockist/new', to: "profiles#new"
+  post 'profiles/stockist', to: "profiles#create"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
