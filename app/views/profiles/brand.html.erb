@@ -8,13 +8,32 @@
 	</div>
 </div>
 
-<article class ="stockist_existing_brands">
+<section class ="stockist_existing_brands">
 	<h3>Stockist Brands</h3>
 	<ul class="existing_brands_list">
 		<% current_user.stockist.brands.each do |sb|%>
 			<li><%= "#{sb.brand}" %></li>
 		<%end%>
 	</ul>
+</section>
+
+
+<article class="form-container">
+	<%= simple_form_for(Brand.new, as: :brand, method: :post, url: profiles_stockist_brand_path) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+	<div class="form-inputs">	
+		<%# <%=f.collection_select :brand_id, @brands, :id, :brand, label_method: :brand, value_method: :brand,label: "Brand" ,include_blank: false%>
+		<%= f.input :brand, collection: Brand.all, label_method: :brand, label: "Brand" ,include_blank: false %>
+	</div>
+
+	<div>
+    <%= f.button :submit, 'Save', class: 'btn btn-light' %>
+  </div>
+
+	<% end %>
 </article>
+	
 
-
+	

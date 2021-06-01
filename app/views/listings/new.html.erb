@@ -4,8 +4,6 @@
 	</div>
 </div>
 
-
-#form re-do
 <article class="form-container">
   <%= simple_form_for(@listing) do |f| %>
     <%= f.error_notification %>
@@ -13,10 +11,10 @@
 
   <div class="form-inputs">
 
-    <%=f.collection_check_boxes :brand_ids, @brands, :id, :brand do |b|%>
-      <%=b.label(class: 'form-check-label')%>
-      <%=b.check_box(class:'form-check-line mr-2')%>
+    <%=f.collection_select :brand_id, current_user.stockist.brands, :id, :brand do |b|%>
+      
     <%end%>
+    </br></br>
 
     <%= f.input :name %>
     <%= f.input :origin %>
@@ -29,7 +27,7 @@
       <%=b.label(class: 'form-check-label')%>
       <%=b.check_box(class:'form-check-line mr-2')%>
     <%end%>
-
+    </br></br>
     <%= f.simple_fields_for :sizes do |size_form| %>
       <%= size_form.input :size %>
       <%= size_form.input :price %>

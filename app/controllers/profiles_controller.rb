@@ -40,18 +40,25 @@ class ProfilesController < ApplicationController
   def brand
     @brands = Brand.all
     @stockist_brands = StockistBrand.all
+    @stockist_brand_new = StockistBrand.new
+    # @search = params["search"]
+    # if @search.present?
+    #   @brand = @search["brand"]
+    #   @brands = Brand.where("brand ILIKE ?", "%#{@brand}%")
+    # end
   end
 
   def brand_new
-    @brand = Brand.new
+    @brands = Brand.new
     @brand.stockist_brands.build
   end
 
   def brand_create
+    @brands = Brand.all
     @brand = Brand.new(brand_params)
     current_user.stockist.stockist_brands.create(brand:@brand)
     if @brand.save
-      redirect_to profiles_stockist_path(@stockist) 
+      redirect_to profiles_stockist_brand_path(@stockist) 
     
     else
       render :brand_new 
