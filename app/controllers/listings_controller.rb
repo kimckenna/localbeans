@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_stockist_listing, only: [:edit, :update, :destroy] 
   
   # Index page: Shows all Listings including sizes, so price can be displayed
 
@@ -64,6 +65,14 @@ class ListingsController < ApplicationController
 
   def set_listing
     @listing = Listing.find(params[:id])
+  end
+
+  # Redirects to listing if user attempts to edit and isn't stockist who created/owns listing
+  def set_stockist_listing
+    @listing = current_user.stockist.listings.find_by_id(:id)
+    if @listing == nil
+      redirect_to Listing.find(params[:id])
+    end
   end
 
 end
