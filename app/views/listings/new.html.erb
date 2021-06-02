@@ -31,6 +31,7 @@
     <%= f.simple_fields_for :sizes do |size_form| %>
       <%= size_form.input :size %>
       <%= size_form.input :price %>
+      <%= size_form.input :active, as: :radio_buttons, wrapper: :vertical_collection_inline%>
     <% end %>
   </div>
 

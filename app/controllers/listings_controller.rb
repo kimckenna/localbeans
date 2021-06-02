@@ -22,12 +22,15 @@ class ListingsController < ApplicationController
   # Create New Listing: Creates new listing attached to current user, stockist, uses existing brand and grinds and creates price and size as nested attribute
 
   def create
+    puts "creating"
     @brands = Brand.all
     @grinds = Grind.all
     @listing = current_user.stockist.listings.new(listing_params) 
+    puts @listing.brand_id
     if @listing.save
       redirect_to listing_path(@listing) 
     else
+      puts @listing.errors.full_messages
       render :new 
     end
   end
@@ -44,7 +47,7 @@ class ListingsController < ApplicationController
   private
  
   def  listing_params
-    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price], grind_ids: [], brand_ids: [])
+    params.require(:listing).permit(:brand_id, :name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
   end
 
 end
