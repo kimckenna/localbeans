@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'profiles/stockist/brand', to: "profiles#brand"
   get 'profiles/stockist/brand/new', to: "profiles#brand_new"
   post 'profiles/stockist/brand', to: "profiles#brand_create"
+
+  post 'profiles/stockist/brand', to: "profiles#stockist_brand_create"
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

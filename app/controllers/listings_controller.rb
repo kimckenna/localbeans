@@ -1,18 +1,15 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   
+  # Index page: Shows all Listings including sizes, so price can be displayed
+
   def index
     @listing = Listing.includes(:sizes).where(sizes: {active: TRUE})
     @size = Size.all
     @stockist = Stockist.all
   end
 
-  # @listing_sizes = Size.find_by_listing_id(@listing.id)
-  # @active = @listing_sizes.includes(:sizes).where(sizes: {active: TRUE})
-
-
-
-  #User.includes(:posts).where(posts: { title: 'Bobby Table' })
+  # New listing page: New listing form with nested attributes allowed for Brand, Grinds and Sizes 
 
   def new
     @listing = Listing.new
@@ -22,10 +19,9 @@ class ListingsController < ApplicationController
     @listing.sizes.build
   end
 
-  # current_user.stockist.stockist_brands.create(brand:@brand)
+  # Create New Listing: Creates new listing attached to current user, stockist, uses existing brand and grinds and creates price and size as nested attribute
 
   def create
-    #@brands = @listing.stockist.brands.all
     @brands = Brand.all
     @grinds = Grind.all
     @listing = current_user.stockist.listings.new(listing_params) 
@@ -39,6 +35,8 @@ class ListingsController < ApplicationController
   def edit
   end
 
+  # Shows listing slected from index
+
   def show
     @listing = Listing.find(params[:id])
   end
@@ -46,10 +44,7 @@ class ListingsController < ApplicationController
   private
  
   def  listing_params
-    #params.require(:grind).permit(:bean_grind)
-    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price], brand_attributes: [:brand, :id], grind_ids: [])
+    params.require(:listing).permit(:name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price], grind_ids: [], brand_ids: [])
   end
-
-  # brand_attributes: [:id, :brand]
 
 end

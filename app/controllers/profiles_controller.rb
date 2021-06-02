@@ -1,9 +1,13 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, only: [:user, :stockist, :stockist_new, :create]
+  before_action :authenticate_user!, only: [:user, :stockist, :stockist_new, :create, :edit, :update]
+
+  # User Profile - allows user to access their profile and can create or (access if already exists) stockist profile or edit account from here
 
   def user
     @user_profile = current_user.id
   end
+
+  # Stockist profile allows for management of stockist, can access reservations, edit profile and access their stockist brands from here.
 
   def stockist
     #@stockist = Listing.find(params[:id]).stockist_id
@@ -11,16 +15,29 @@ class ProfilesController < ApplicationController
     @size = Size.all
   end
 
+  # New creates a new stockist as each user can only ahve one stockist account and the user account management is already handled by devise
+
   def new
     #@brands = Brand.all
     @stockist = current_user.build_stockist
-    @address = Address.new
+    #@address = Address.new
     @stockist.addresses.build
   end
 
+  # Edit related to editing a stockist details - 
+
   def edit
-    @stockist = current_user.stockist.edit
-    @address = current_user.stockist.address.edit
+    @stockist = current_user.stockist.update(stockist_params)
+    @address = current_user.stockist.address.update(stockist_params)
+  end
+
+  def update
+    @address = current_user.stockist.address.update
+    if @stockist.update(stockist_params)
+      redirect_to profiles_stockist_path(@stockist) 
+    else
+      render :new
+    end
   end
 
   def create
@@ -39,22 +56,34 @@ class ProfilesController < ApplicationController
 
   def brand
     @brands = Brand.all
-    @stockist_brands = StockistBrand.all
-    @stockist_brand_new = StockistBrand.new
-    # @search = params["search"]
-    # if @search.present?
-    #   @brand = @search["brand"]
-    #   @brands = Brand.where("brand ILIKE ?", "%#{@brand}%")
-    # end
+    # @stockist_brands = StockistBrand.all
+    # @stockist_brand_new = StockistBrand.new
+    # @brand = Brand.new
+
+    @stockist_brand = StockistBrand.new
+  end
+
+  def stockist_brand_create
+    # @brands = Brand.all
+    stockist_brand.stockist = current_user.stockist
+    @brand = Brand.find(params[:brand_id])
+    @stockist_brand.brand = @brand
+    current_user.stockist.stockist_brands.create(brand:@brand)
+    if @brand.save
+      redirect_to profiles_stockist_brand_path(@stockist) 
+    
+    else
+      render :brand_new 
+    end
   end
 
   def brand_new
-    @brands = Brand.new
+    @brand = Brand.new
     @brand.stockist_brands.build
   end
 
   def brand_create
-    @brands = Brand.all
+    # @brands = Brand.all
     @brand = Brand.new(brand_params)
     current_user.stockist.stockist_brands.create(brand:@brand)
     if @brand.save
@@ -68,10 +97,10 @@ class ProfilesController < ApplicationController
   private
  
   def  stockist_params
-    params.require(:stockist).permit(:business_name, :abn, address_attributes: [:id, :address_line1, :address_line2, :suburb, :state, :postcode], brand_ids: [])
+    params.require(:stockist).permit(:business_name, :abn, addresses_attributes: [:id, :address_line1, :address_line2, :suburb, :state, :postcode], brand_ids: [])
   end
 
   def  brand_params
-    params.require(:brand).permit(:brand)
+    params.require(:brand).permit(:id, :brand)
   end
 end
