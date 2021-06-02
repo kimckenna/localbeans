@@ -29,8 +29,6 @@ class ProfilesController < ApplicationController
 
   def edit
     @address = Address.all
-    # @stockist = current_user.stockist
-    # @address = current_user.stockist.addresses.update(stockist_params)
   end
 
   def update
@@ -42,13 +40,10 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    #@brands = Brand.all
     @address = Address.all
     @stockist = current_user.build_stockist(stockist_params)
-    # @stockist = Stockist.create(stockist_params)
-    #@user_profile.stockist = @stockist
     @address = Address.new
-    # @stockist = current_user.create_stockist(stockist_params)
+    
     if @stockist.save
       redirect_to profiles_stockist_path(@stockist) 
     else
@@ -58,8 +53,7 @@ class ProfilesController < ApplicationController
 
   def brand
     @stockist_brand = StockistBrand.new
-    # @stockist_brands = StockistBrand.all
-    # @stockist_brand_new = StockistBrand.new
+  
     @brands = []
     Brand.all.each do |b|
       add = true;
@@ -69,13 +63,11 @@ class ProfilesController < ApplicationController
       end
       @brands << b if add
     end
-    puts @brands
   
   end
 
   def stockist_brand_add
     @brand = Brand.find(params[:brand][:brand])
-    # stockistbrand = StockistBrand.where(stockist:current_user.stockist, brand:@brand)
 
     current_user.stockist.stockist_brands.create(brand:@brand)
     if @brand.save
@@ -91,7 +83,7 @@ class ProfilesController < ApplicationController
   end
 
   def brand_create
-    # @brands = Brand.all
+  
     @brand = Brand.new(brand_params)
     current_user.stockist.stockist_brands.create(brand:@brand)
     if @brand.save

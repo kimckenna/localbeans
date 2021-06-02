@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # creates all - GET POST PATCH PUT DELETE index create new edit show update destroy 
   resources :listings
 
+  put 'listings/:id', to: "listings#update", as: 'update_listing'
+
   get 'profiles/user'
   get 'profiles/stockist'
 
