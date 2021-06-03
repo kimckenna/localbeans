@@ -53,16 +53,10 @@ class ProfilesController < ApplicationController
 
   def brand
     @stockist_brand = StockistBrand.new
-  
-    @brands = []
-    Brand.all.each do |b|
-      add = true;
-      b.stockists.each do |s|
-        add = false if s.id == current_user.stockist.id
-        puts s.id
-      end
-      @brands << b if add
-    end
+
+    brand_ids = current_user.stockist.stockist_brands.pluck(:brand_id)
+    @brands = Brand.where.not(id: brand_ids)
+
   
   end
 

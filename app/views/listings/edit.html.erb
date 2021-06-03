@@ -1,4 +1,9 @@
 <h1>Listings#edit</h1>
-<p>Find me in app/views/listings/edit.html.erb</p>
+
+<button type="button" class="btn btn-light"> 
+	<%= link_to "Add Size", add_size_path %> 
+</button>
+<div>
+</div>
 
 <%= render 'shared/listing_form', method: :put, url: update_listing_path %>

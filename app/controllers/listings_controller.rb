@@ -51,6 +51,23 @@ class ListingsController < ApplicationController
     @grinds = Grind.all
   end
 
+  def sizes_new
+    @size = Size.new
+  end
+
+  def sizes_create
+    #@size = Size.new(size_params)
+    #puts @listing.errors.full_messages
+    #@size = current_user.stockist.listings.size.build(size_params) 
+    @listing = Listing.find(params[:id])
+    @size = @listing.sizes.new(size_params)
+    if @size.save
+      redirect_to @listing
+    else
+      puts @size.errors.full_messages
+      render :sizes_new 
+    end
+  end
   # Shows listing slected from index
 
   def show
@@ -63,16 +80,24 @@ class ListingsController < ApplicationController
     params.require(:listing).permit(:brand_id, :name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
   end
 
+  def  size_params
+    params.require(:sizes).permit(:id, :size, :price, :active, :listing_id)
+  end
+
   def set_listing
     @listing = Listing.find(params[:id])
   end
 
   # Redirects to listing if user attempts to edit and isn't stockist who created/owns listing
   def set_stockist_listing
-    @listing = current_user.stockist.listings.find_by_id(:id)
+    @listing = current_user.stockist.listings.find_by_id(params[:id])
     if @listing == nil
       redirect_to Listing.find(params[:id])
     end
   end
+
+  # def set_listing_size
+    
+  # end
 
 end

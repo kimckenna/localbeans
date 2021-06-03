@@ -1,0 +1,19 @@
+<h1>Size#new</h1>
+
+<article class="form-container">
+	<%= simple_form_for(@size, as: :sizes, method: :post, url: create_size_path) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+	<div class="form-inputs">
+		<%= f.input :size %>
+		<%= f.input :price %>
+		<%= f.input :active, as: :radio_buttons, wrapper: :vertical_collection_inline %>
+	</div>
+
+	<div>
+    <%= f.button :submit, 'Save', class: 'btn btn-light' %>
+  </div>
+
+	<% end %>
+</article>
