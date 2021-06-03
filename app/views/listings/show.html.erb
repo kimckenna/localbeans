@@ -1,5 +1,4 @@
 <article class="show-listing-container">
-
 <div class="card mb-3 border-0" style="max-width: 540px; background-color: #FFFBF8;">
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -14,7 +13,7 @@
 					<li>Type: <%= @listing.bean_type %></li>
 					<li>Flavour Profile: <%= @listing.flavour_profile %></li>
           <article>
-            <%= simple_form_for @listing, as: :listing, method: :post, url: reservation_path, 
+            <%= simple_form_for @listing, as: :reservation, method: :post, url: create_reservation_path, 
               wrapper: :floating_labels_form do |f| %>
               <%= f.error_notification %>
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -22,7 +21,7 @@
               <li><%=f.collection_select :grind_ids, @grinds, :id, :bean_grind do |b|%></li>
               <% end %>
 
-              <li><%=f.collection_select :size_ids, @sizes, :id, :size do |b|%></li>
+              <li><%=f.collection_select :size_ids, @sizes, :id, :size_price do |b|%></li>
               <% end %>
                 
               <div>
@@ -30,10 +29,15 @@
               </div>
             <% end %>
           </article>
-          <li>Min Price: <%= "#{number_to_currency(@min_price)}"%></li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+</article>
+
+<article class="stockist-details">
+  <div>
+
+  </div>
 </article>

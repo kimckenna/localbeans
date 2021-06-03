@@ -42,7 +42,9 @@ Rails.application.routes.draw do
   #Reservations
   get 'reservations/index', to: "reservations#index", as: 'reservations'
 
-  get 'reservations/show', to: "reservations#show", as: 'reservation'
+  get 'reservations/show', to: "reservations#show", as: 'show_reservation'
+
+  post 'reservations/show', to: "reservations#create", as: 'create_reservation'
 
   
 

@@ -5,6 +5,14 @@ class ListingsController < ApplicationController
   
   # Index page: Shows all Listings including sizes, so price can be displayed
 
+  def home
+
+  end
+
+  def home_create
+    
+  end
+
   def index
     @listing = Listing.includes(:sizes).where(sizes: {active: TRUE})
     @size = Size.all
@@ -76,7 +84,6 @@ class ListingsController < ApplicationController
     @sizes = @listing.sizes.all
     @grinds = @listing.grinds.all
     @reservation = current_user.reservations.new
-    @min_price = @listing.sizes.pluck(:price).min
   end
 
   private
@@ -93,9 +100,9 @@ class ListingsController < ApplicationController
     params.require(:sizes).permit(:id, :size, :price, :active, :listing_id)
   end
 
-  def  show_listing_params
-    params.require(:listing).permit(sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
-  end
+  # def  show_listing_params
+  #   params.require(:listing).permit(sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
+  # end
 
   def set_listing
     @listing = Listing.find(params[:id])

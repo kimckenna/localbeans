@@ -13,10 +13,16 @@
 					<div class="col-sm-4 cards-wrap h-100 d-table">
 						<div class="card border-0 align-middle" style="width: 18rem; background-color: #F8F6F3">
 							<img src="..." class="card-img-top" alt="...">
+
 							<div class="card-body">
 								<h5><%= link_to listing.name, listing %> </h5>
-								<div><%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%></div>
-								<div>Min: <%= number_to_currency(@min_price)%></div>
+								
+								<div>
+									<%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%>
+								</div>
+
+								<p>Min: <%= number_to_currency(@min_price)%></p>
+
 								<% displayed_listing << listing.id %>
 							</div>
 						</div>
