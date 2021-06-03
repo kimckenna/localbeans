@@ -62,9 +62,9 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @size = @listing.sizes.new(size_params)
     if @size.save
-      redirect_to @listing
+      redirect_to edit_listing_path
     else
-      puts @size.errors.full_messages
+      #puts @size.errors.full_messages
       render :sizes_new 
     end
   end
@@ -72,9 +72,18 @@ class ListingsController < ApplicationController
 
   def show
     # @listing = Listing.find(params[:id])
+    @listing = Listing.find(params[:id])
+    @sizes = @listing.sizes.all
+    @grinds = @listing.grinds.all
+    @reservation = current_user.reservations.new
+    @min_price = @listing.sizes.pluck(:price).min
   end
 
   private
+
+  def show_listing_params
+    
+  end
  
   def  listing_params
     params.require(:listing).permit(:brand_id, :name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
@@ -82,6 +91,10 @@ class ListingsController < ApplicationController
 
   def  size_params
     params.require(:sizes).permit(:id, :size, :price, :active, :listing_id)
+  end
+
+  def  show_listing_params
+    params.require(:listing).permit(sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
   end
 
   def set_listing

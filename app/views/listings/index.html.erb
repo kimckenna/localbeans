@@ -8,20 +8,19 @@
 	<div class="row h-50">
 		<% displayed_listing = [] %>
 		<% @listing.each do |listing| %>
-			<% listing.sizes.each do |size| %>
 				<% unless displayed_listing.include?(listing.id) %>
+    			<% @min_price = listing.sizes.pluck(:price).min %>
 					<div class="col-sm-4 cards-wrap h-100 d-table">
 						<div class="card border-0 align-middle" style="width: 18rem; background-color: #F8F6F3">
 							<img src="..." class="card-img-top" alt="...">
 							<div class="card-body">
 								<h5><%= link_to listing.name, listing %> </h5>
 								<div><%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%></div>
-								<div>Min: <%= number_to_currency(size.price)%></div>
+								<div>Min: <%= number_to_currency(@min_price)%></div>
 								<% displayed_listing << listing.id %>
 							</div>
 						</div>
 					</div>
-				<% end %>
 			<% end %>
 		<% end %>
 	</div>

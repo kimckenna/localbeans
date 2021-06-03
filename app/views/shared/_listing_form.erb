@@ -16,7 +16,7 @@
     <%= f.input :description, as: :text %>
     <%= f.input :bean_type, as: :radio_buttons, collection: ['Single Origin', 'Mix Blend', 'Decaf'], wrapper: :vertical_collection_inline, class: 'custom-control-input' %>
     <%= f.input :roast %>
-
+		<p>Grinds</p>
     <%=f.collection_check_boxes :grind_ids, @grinds, :id, :bean_grind do |b|%>
       <%=b.label(class: 'form-check-label')%>
       <%=b.check_box(class:'form-check-line mr-2')%>

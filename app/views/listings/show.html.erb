@@ -13,9 +13,25 @@
 					<li>Origin: <%= @listing.origin %></li>
 					<li>Type: <%= @listing.bean_type %></li>
 					<li>Flavour Profile: <%= @listing.flavour_profile %></li>
-				</ul>
-        
-        </article>
+          <article>
+            <%= simple_form_for @listing, as: :listing, method: :post, url: reservation_path, 
+              wrapper: :floating_labels_form do |f| %>
+              <%= f.error_notification %>
+              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+              <li><%=f.collection_select :grind_ids, @grinds, :id, :bean_grind do |b|%></li>
+              <% end %>
+
+              <li><%=f.collection_select :size_ids, @sizes, :id, :size do |b|%></li>
+              <% end %>
+                
+              <div>
+                <%= f.button :submit, 'Reserve', class: 'btn btn-light' %>
+              </div>
+            <% end %>
+          </article>
+          <li>Min Price: <%= "#{number_to_currency(@min_price)}"%></li>
+        </ul>
       </div>
     </div>
   </div>
