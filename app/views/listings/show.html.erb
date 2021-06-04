@@ -2,7 +2,7 @@
 <div class="card mb-3 border-0 custom-card" style="width: 60%; max-width: 800px; background-color: #FFFBF8;">
   <div class="row no-gutters">
     <div class="col-md-5">
-      <div class="show_listing_img">
+      <div>
         <%= @listing.images.attached? ? (image_tag @listing.images.first , alt:'Stockist Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') : (image_tag 'coffee_default.jpeg', alt:'Default Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') %>
       </div>
     </div>

@@ -17,7 +17,7 @@
 							</div>
 
 							<div class="card-body">
-								<h5><%= link_to listing.name, listing %> </h5>
+								<h5><%= link_to listing.name, listing, class: 'stretched-link' %> </h5>
 								
 								<div>
 									<%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%>
