@@ -76,8 +76,7 @@ class ListingsController < ApplicationController
   # Shows listing slected from index
 
   def show
-    # @listing = Listing.find(params[:id])
-    @listing = Listing.find(params[:id])
+    # @listing = Listing.find(params[:id])å
     @sizes = @listing.sizes.all
     @grinds = @listing.grinds.all
     @reservation = current_user.reservations.new

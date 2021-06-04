@@ -8,19 +8,7 @@ class Address < ApplicationRecord
 
   enum state: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
 
-  # include PgSearch::Model
-
-  # pg_search_scope :search_by_suburb,
-  #   against: [ :suburb, :postcode],
-  #   associated_against: {
-  #     listing: [ :stoc]
-  #   },
-  #   using: {
-  #     tsearch: { prefix: true }
-  #   }
-
-  #   pg_search_scope :tasty_search, associated_against: {
-  #     cheeses: [:kind, :brand],
-  #     cracker: :kind
-  #   }
+  def stockist_address
+    "#{address_line1.downcase.gsub(/[a-z']+/,&:capitalize)} #{address_line2.downcase.gsub(/[a-z']+/,&:capitalize)}, #{suburb.downcase.gsub(/[a-z']+/,&:capitalize)}, #{state.upcase}, #{postcode}"
+  end
 end
