@@ -29,7 +29,7 @@
                 <li class="listing_show_li"><%=f.collection_select :size_id, @sizes, :id, :size_price do |b|%></li>
                 <% end %>
 
-                <% if current_user.stockist.id == @listing.stockist_id %>
+                <% if current_user.stockist.present? && current_user.stockist.id == @listing.stockist_id %>
                 <div class="edit-button">
                   <button type="button" class="btn btn-light"> 
                     <%= link_to "Edit Listing", edit_listing_path %> 

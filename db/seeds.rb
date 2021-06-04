@@ -68,6 +68,7 @@ puts "Populating Addresses"
 
 stockist1.addresses.create!(
 	address_line1: '100 Toorak Road',
+	address_line2: '',
 	suburb: 'Toorak',
 	state: 'VIC',
 	postcode: '3142'
