@@ -16,23 +16,32 @@
           <li class="listing_show_li">Roast: <%= @listing.roast %></li>
 					<li class="listing_show_li">Flavour Profile: <%= @listing.flavour_profile %></li>
           <li class="listing_show_li">Additional Notes: <%= @listing.description %></li>
-          <article>
-            <%= simple_form_for @listing, as: :reservation, method: :post, url: create_reservation_path, 
-              wrapper: :floating_labels_form do |f| %>
-              <%= f.error_notification %>
-              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-              <li class="listing_show_li"><%=f.collection_select :grind_ids, @grinds, :id, :bean_grind do |b|%></li>
-              <% end %>
+            <article>
+              <%= simple_form_for @listing, as: :reservation, method: :post, url: create_reservation_path, 
+                wrapper: :floating_labels_form do |f| %>
+                <%= f.error_notification %>
+                <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-              <li class="listing_show_li"><%=f.collection_select :size_ids, @sizes, :id, :size_price do |b|%></li>
+                <li class="listing_show_li"><%=f.collection_select :grind_ids, @grinds, :id, :bean_grind do |b|%></li>
+                <% end %>
+
+                <li class="listing_show_li"><%=f.collection_select :size_ids, @sizes, :id, :size_price do |b|%></li>
+                <% end %>
+
+                <% if current_user.stockist.id == @listing.stockist_id %>
+                <div class="edit-button">
+                  <button type="button" class="btn btn-light"> 
+                    <%= link_to "Edit Listing", edit_listing_path %> 
+                  </button>
+                </div>
+                  <% else %>  
+                  <div class="listing_show_button">
+                    <%= f.button :submit, 'Reserve', class: 'btn btn-light' %>
+                  </div>
+                <%end%>
               <% end %>
-                
-              <div class="listing_show_button">
-                <%= f.button :submit, 'Reserve', class: 'btn btn-light' %>
-              </div>
-            <% end %>
-          </article>
+            </article>
         </ul>
       </div>
     </div>

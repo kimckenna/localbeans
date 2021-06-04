@@ -11,7 +11,7 @@
 		<div class="buttons">
 			<% if current_user.stockist.present? %>
 				<button type="button" class="btn btn-light"> 
-					<%= link_to "#{current_user.stockist.business_name.capitalize}", profiles_stockist_path %> 
+					<%= link_to "Stockist Profile", profiles_stockist_path %> 
 				</button>
 					<% else %>
 				<button type="button" class="btn btn-light"> 
