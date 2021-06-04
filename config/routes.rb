@@ -40,11 +40,13 @@ Rails.application.routes.draw do
   post 'listings/:id/edit/sizes/new', to: "listings#sizes_create", as: 'create_size'
 
   #Reservations
-  get 'reservations/index', to: "reservations#index", as: 'reservations'
+  get 'reservations', to: "reservations#index", as: 'reservations'
 
-  get 'reservations/:id', to: "reservations#show", as: 'show_reservation'
+  get 'reservations/show', to: "reservations#show", as: 'show_reservation'
 
-  post 'reservations/:id', to: "reservations#create", as: 'create_reservation'
+  post 'reservations/show', to: "reservations#create", as: 'create_reservation'
+
+  get 'reservations/:id', to: "reservations#reservation", as: 'reservation'
 
   
 

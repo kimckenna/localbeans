@@ -3,3 +3,16 @@
 		<h1 class="title">Reservations</h1>
 	</div>
 </div>
+
+<article class="show-listing-container">
+	<div>
+		<ul>
+			<% @sizes.each do |s| %>
+				<% listing = Listing.find(s.listing_id)%>
+				<% s.reservations.each do |r| %>
+					<li><%= r.created_at %>   |   <%=  "Reservation:  #R#{r.id}  " %>  |  <%=  "#{listing.brand.brand}" %>  |  <%=  "#{listing.name}"%>  |  <%=  "#{number_to_currency(s.price)}" %></li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+</article>

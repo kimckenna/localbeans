@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
 
   def user
     @user_profile = current_user.id
+    @reservations = current_user.reservations.all
   end
 
   # Stockist profile allows for management of stockist, can access reservations, edit profile and access their stockist brands from here.

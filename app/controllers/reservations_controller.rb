@@ -1,23 +1,28 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_reservation, only: [:destroy]
+  before_action :set_reservation, only: [:reservation, :destroy]
 
   def index
+    # @reservations = []
+    # @stockist = current_user.stockist.id
+    # @sizes = Size.pluck(:id)where(:listing_id == @stockist)
+    # #@listing = Listing.find(@size.listing_id)
   end
 
   def show
-    @new_reservation = current_user.reservations.last
-    @size = Size.find(@new_reservation.size_id)
-    @grind = Grind.find(@new_reservation.grind_id)
+    @reservation = current_user.reservations.last
+    @size = Size.find(@reservation.size_id)
+    @grind = Grind.find(@reservation.grind_id)
     @listing = Listing.find(@size.listing_id)
   end
 
-  # def new
-  # end
+  def reservation
+    @size = Size.find(@reservation.size_id)
+    @grind = Grind.find(@reservation.grind_id)
+    @listing = Listing.find(@size.listing_id)
+  end
 
   def create
-    # @size = Size.listing.find(params[:id])
-    # @listing = Size.find(params[:listing_id])
     puts reservation_params
     @reservation = current_user.reservations.new(reservation_params)
     if @reservation.save
