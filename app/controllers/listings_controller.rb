@@ -79,7 +79,11 @@ class ListingsController < ApplicationController
     # @listing = Listing.find(params[:id])å
     @sizes = @listing.sizes.all
     @grinds = @listing.grinds.all
-    @reservation = current_user.reservations.new
+    if current_user.present?
+      @reservation = current_user.reservations.new
+    else
+      redirect_to new_user_session_path  
+    end
   end
 
   private
