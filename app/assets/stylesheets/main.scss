@@ -57,10 +57,17 @@ body{
 	font-weight: 400;
 }
 
-h1, h2, h3{
+h2, h3{
 	font-family: 'porter_sans_blockblock'; //$logo-font
 	color: #726E6B; //$text-color
 	text-align: end;
+}
+
+h1{
+	font-family: 'porter_sans_blockblock'; //$logo-font
+	color: #726E6B; //$text-color
+	text-align: end;
+	font-size: 35px;
 }
 
 a, a:visited, a:active{

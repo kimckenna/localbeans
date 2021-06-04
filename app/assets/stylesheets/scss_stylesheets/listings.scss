@@ -30,8 +30,13 @@
 	align-items: center;
 }
 
-.listing-container, .form-container{
-	max-width: 1000px;
+.listing-container{
+	max-width: 800px;
+	margin: auto;
+}
+
+.form-container{
+	max-width: 500px;
 	margin: auto;
 }
 
@@ -47,10 +52,6 @@
 }
 
 // EDIT
-.form-container{
-	max-width: 800px;
-	margin: auto;
-}
 
 
 // img{
@@ -91,12 +92,12 @@
 
 .img-fluid{
 	max-width: 90%;
-	margin: 2vw auto;
+	margin: 1vw auto;
 }
 
 .card-img-top {
 	width: 100%;
-	height: 35vw;
+	height: 15vw;
 	object-fit: cover;
 }
 

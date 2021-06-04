@@ -1,37 +1,45 @@
-<h1> <%= "#{current_user.stockist.business_name.capitalize}'s Brands" %></h1>
 
-<div class="container-fluid">
-	<div class="buttons">
-		<button type="button" class="btn btn-light"> 
-			<%= link_to "Create Beans Brand", profiles_stockist_brand_new_path %> 
-		</button>
+<div class="title-container">
+	<div class='title-wrap'>
+		<h1 class="title"><%= "Stockist Brands" %></h1>
 	</div>
 </div>
 
-<section class ="stockist_existing_brands">
-	<h3>Stockist Brands</h3>
-	<ul class="existing_brands_list">
-		<% current_user.stockist.brands.each do |sb|%>
-			<li><%= "#{sb.brand}" %></li>
+<div class="page-container">
+
+	<section class ="stockist_existing_brands">
+		<ul class="existing_brands_list">
+			<% current_user.stockist.brands.each do |sb|%>
+				<li><%= "#{sb.brand}" %></li>
+			<%end%>
+		</ul>
+	</section>
+
+
+	<article class="form-container">
+		<%= simple_form_for(@stockist_brand, as: :brand, method: :post, url: add_brand_to_stockist_path) do |f| %>
+			<%= f.error_notification %>
+			<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+		<div class="form-inputs"> 
+			<%= f.input :brand, collection: @brands, label_method: :brand, label: "Brand" ,include_blank: false %>
+		</div>
+
+		<div>
+			<%= f.button :submit, 'Save', class: 'btn btn-light' %>
+		</div>
 		<%end%>
-	</ul>
-</section>
+	</article>
+	
+	<div class="container-fluid">
+		<div class="buttons">
+			<button type="button" class="btn btn-light"> 
+				<%= link_to "Create Beans Brand", profiles_stockist_brand_new_path %> 
+			</button>
+		</div>
+	</div>
 
-
-<article class="form-container">
-	<%= simple_form_for(@stockist_brand, as: :brand, method: :post, url: add_brand_to_stockist_path) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs"> 
-    <%= f.input :brand, collection: @brands, label_method: :brand, label: "Brand" ,include_blank: false %>
-  </div>
-
-	<div>
-    <%= f.button :submit, 'Save', class: 'btn btn-light' %>
-  </div>
-	<%end%>
-</article>
+</div>
 
 
 	

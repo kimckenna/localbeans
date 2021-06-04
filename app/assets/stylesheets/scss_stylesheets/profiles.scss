@@ -13,3 +13,21 @@
 .actions{
 	margin: 2rem;
 }
+
+.page-container{
+	max-width: 800px;
+	margin: auto;
+	.profile-info{
+		.stockist-address{
+			text-align: end;
+		}
+	}
+}
+
+.buttons {
+	margin-bottom: 2vw;
+	button{
+		margin: 1vw;
+	}
+}
+

@@ -1,4 +1,8 @@
-<h1> <%= "Edit #{current_user.stockist.business_name.capitalize}" %></h1>
+<div class="title-container">
+	<div class='title-wrap'>
+		<h1 class="title"><%= "Edit #{current_user.stockist.business_name.capitalize}" %></h1>
+	</div>
+</div>
 
 <%= render 'shared/profiles_stockist_form', method: :put, url: edit_stockist_path %>
 

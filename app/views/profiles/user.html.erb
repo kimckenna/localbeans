@@ -1,19 +1,26 @@
-<h1> Profile </h1>
-<h5><%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %></h5>
+<div class="title-container">
+	<div class='title-wrap'>
+		<h1 class="title"><%= "#{current_user.first_name} Profile" %></h1>
+	</div>
+</div>
 
-<div class="container-fluid">
-	<div class="buttons">
-		<% if current_user.stockist.present? %>
+<div class="page-container">
+	<h5><%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %></h5>
+
+	<div class="container-fluid">
+		<div class="buttons">
+			<% if current_user.stockist.present? %>
+				<button type="button" class="btn btn-light"> 
+					<%= link_to "#{current_user.stockist.business_name.capitalize}", profiles_stockist_path %> 
+				</button>
+					<% else %>
+				<button type="button" class="btn btn-light"> 
+					<%= link_to "Become Stockist", profiles_stockist_new_path %> 
+				</button>
+			<%end%>
 			<button type="button" class="btn btn-light"> 
-				<%= link_to "#{current_user.stockist.business_name.capitalize}", profiles_stockist_path %> 
+					<%= link_to "Edit Profile", edit_user_registration_path %> 
 			</button>
-				<% else %>
-			<button type="button" class="btn btn-light"> 
-				<%= link_to "Become Stockist", profiles_stockist_new_path %> 
-			</button>
-		<%end%>
-		<button type="button" class="btn btn-light"> 
-				<%= link_to "Edit Profile", edit_user_registration_path %> 
-		</button>
+		</div>
 	</div>
 </div>

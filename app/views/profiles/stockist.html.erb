@@ -1,34 +1,33 @@
-<h1> <%= "#{current_user.stockist.business_name.capitalize}" %></h1>
-
-<div class="container-fluid">
-	<div class="buttons">
-		<%# if current_user.stockist.stockist_brands.include?(current_user.stockist.id) %>
-		<button type="button" class="btn btn-light"> 
-			<%= link_to "Beans Brands", profiles_stockist_brand_path %> 
-		</button>
-				<%# else %>
-		<%#end%>
-		<button type="button" class="btn btn-light"> 
-				<%= link_to "Reservations", edit_user_registration_path %> 
-		</button>
-		<button type="button" class="btn btn-light"> 
-				<%= link_to "Edit Profile", profiles_stockist_edit_path %> 
-		</button>
+<div class="title-container">
+	<div class='title-wrap'>
+		<h1 class="title"><%= "#{current_user.stockist.business_name.capitalize}" %></h1>
 	</div>
 </div>
 
-<ul>
-	<% displayed_listing = [] %>
-	<% @listing.each do |listing| %>
-		<% if listing.stockist_id == current_user.id %>
-			<% listing.sizes.each do |size| %>
-				<% unless displayed_listing.include?(listing.id) %>
-					<li><%= listing.stockist.business_name %> | <%= stockist.addresses.first.suburb%></li>
-					<li><%= link_to listing.name, listing %> </li>
-					<li>Min: <%= number_to_currency(size.price)%></li>
-					<% displayed_listing << listing.id %>
-				<% end %>
-			<% end %>
-		<%end%>
-	<% end %>
-</ul>
+<div class="page-container">
+	<div class="profile-info">
+		<div class="stockist-address">
+			<h5> <%= "#{@address.suburb.capitalize}" %>
+			<h6> <%= "#{@address.address_line1.capitalize}, #{@address.address_line2.capitalize} #{@address.suburb.capitalize}, #{@address.state.capitalize}, #{@address.postcode}" %>
+		</div>
+		<div class="container-fluid">
+			<div class="buttons">
+				<%# if current_user.stockist.stockist_brands.include?(current_user.stockist.id) %>
+				<button type="button" class="btn btn-light"> 
+					<%= link_to "Beans Brands", profiles_stockist_brand_path %> 
+				</button>
+						<%# else %>
+				<%#end%>
+				<button type="button" class="btn btn-light"> 
+						<%= link_to "Reservations", reservations_path %> 
+				</button>
+				<button type="button" class="btn btn-light"> 
+						<%= link_to "Edit Profile", profiles_stockist_edit_path %> 
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<h3>All Listings</h3>
+	<%= render 'shared/display_all_listings'%>
+</div>

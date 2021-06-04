@@ -12,8 +12,9 @@ class ProfilesController < ApplicationController
 
   def stockist
     #@stockist = Listing.find(params[:id]).stockist_id
-    @listing = Listing.includes(:sizes).where(sizes: {active: TRUE})
+    @listing = current_user.stockist.listings.includes(:sizes).with_attached_images
     @size = Size.all
+    @address = current_user.stockist.addresses.first
   end
 
   # New creates a new stockist as each user can only ahve one stockist account and the user account management is already handled by devise
