@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
       redirect_to show_reservation_path
     else
       puts @reservation.errors.full_messages
-      render :show
+      render :index
       #redirect_to request.referrer
     end
   end
@@ -26,6 +26,6 @@ class ReservationsController < ApplicationController
   private 
 
   def  reservation_params
-    params.require(:reservation).permit( :size_ids, :grind_ids )
+    params.require(:reservation).permit( :sizes_ids, :grinds_ids )
   end
 end
