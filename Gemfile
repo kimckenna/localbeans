@@ -66,3 +66,5 @@ gem "faker", "~> 2.18"
 gem 'octicons_helper'
 
 gem 'pg_search'
+
+gem "aws-sdk-s3", "~> 1.96"
