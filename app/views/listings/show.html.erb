@@ -18,15 +18,15 @@
           <li class="listing_show_li">Additional Notes: <%= @listing.description %></li>
 
             <article>
-              <%= simple_form_for @listing, as: :reservation, method: :post, url: create_reservation_path, 
+              <%= simple_form_for @reservation, as: :reservations, method: :post, url: create_reservation_path, 
                 wrapper: :floating_labels_form do |f| %>
                 <%= f.error_notification %>
                 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-                <li class="listing_show_li"><%=f.collection_select :grind_ids, @grinds, :id, :bean_grind do |b|%></li>
+                <li class="listing_show_li"><%=f.collection_select :grind_id, @grinds, :id, :bean_grind do |b|%></li>
                 <% end %>
 
-                <li class="listing_show_li"><%=f.collection_select :size_ids, @sizes, :id, :size_price do |b|%></li>
+                <li class="listing_show_li"><%=f.collection_select :size_id, @sizes, :id, :size_price do |b|%></li>
                 <% end %>
 
                 <% if current_user.stockist.id == @listing.stockist_id %>

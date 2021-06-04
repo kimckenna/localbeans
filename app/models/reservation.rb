@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
-  belongs_to :sizes
+  belongs_to :size
   belongs_to :user
-  belongs_to :grinds
+  belongs_to :grind
   #accepts_nested_attributes_for :sizes, :grinds
 end

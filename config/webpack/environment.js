@@ -1,5 +1,6 @@
 const { environment } = require('@rails/webpacker');
-const WebpackDevServer = require('webpack-dev-server');
+// const WebpackDevServer = require('webpack-dev-server');
+const webpack = require("webpack");
 
 environment.plugins.append(
 	"Provide", 

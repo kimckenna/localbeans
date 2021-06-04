@@ -13,7 +13,8 @@ class ReservationsController < ApplicationController
   def create
     # @size = Size.listing.find(params[:id])
     # @listing = Size.find(params[:listing_id])
-    @reservation = current_user.reservations.create(reservation_params)
+    puts reservation_params
+    @reservation = current_user.reservations.new(reservation_params)
     if @reservation.save
       redirect_to show_reservation_path
     else
@@ -26,6 +27,6 @@ class ReservationsController < ApplicationController
   private 
 
   def  reservation_params
-    params.require(:reservation).permit( :sizes_ids, :grinds_ids )
+    params.require(:reservations).permit(:grind_id, :size_id)
   end
 end
