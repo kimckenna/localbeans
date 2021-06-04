@@ -26,7 +26,9 @@
       <%= size_form.input :size %>
       <%= size_form.input :price %>
       <%= size_form.input :active, as: :radio_buttons, wrapper: :vertical_collection_inline%>
+    <%= f.file_field :images, accept: 'image/png, image/jpg, image/jpeg'%>
     <% end %>
+    
   </div>
 
   <div>

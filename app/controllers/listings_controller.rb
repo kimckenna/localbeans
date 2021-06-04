@@ -5,16 +5,13 @@ class ListingsController < ApplicationController
   
   # Index page: Shows all Listings including sizes, so price can be displayed
 
-  def home
-
-  end
 
   def home_create
     
   end
 
   def index
-    @listing = Listing.includes(:sizes).where(sizes: {active: TRUE})
+    @listing = Listing.includes(:sizes).where(sizes: {active: TRUE}).with_attached_images
     @size = Size.all
     @stockist = Stockist.all
   end
@@ -93,7 +90,7 @@ class ListingsController < ApplicationController
   end
  
   def  listing_params
-    params.require(:listing).permit(:brand_id, :name, :origin, :flavour_profile, :bean_type, :description, :roast, sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
+    params.require(:listing).permit(:brand_id, :name, :origin, :flavour_profile, :bean_type, :description, :roast, :images, sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
   end
 
   def  size_params
