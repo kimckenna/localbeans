@@ -21,7 +21,7 @@ https://github.com/kimckenna/localbeans/tree/main
 #### Listing Page
 
 <p float="left" align="center">
-  <img src="./docs/localbeans_screenshot_live_9.png" alt="index page desktop" />
+  <img src="./docs/localbeans_screenshot_live_8.png" alt="index page desktop" />
 </p>
 
 #### Show Listing Page
