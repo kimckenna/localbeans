@@ -6,10 +6,17 @@
 
 <div class="page-container">
 
-	<button type="button" class="btn btn-light"> 
-		<%= link_to "Add Size", add_size_path %> 
-	</button>
+	<div class="container-fluid">
+		<div class="buttons">
+			<button type="button" class="btn btn-light"> 
+				<%= link_to "Brands", profiles_stockist_brand_path %> 
+			</button>
+			<button type="button" class="btn btn-light"> 
+				<%= link_to "Add Size", add_size_path %> 
+			</button>
+		</div>
+	</div>
 
 	<%= render 'shared/listing_form', method: :put, url: update_listing_path %>
-	
+
 </div>

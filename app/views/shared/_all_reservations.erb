@@ -1,9 +1,9 @@
 <article class="show-listing-container">
-	<div>
-		<ul>
+	<div class="reservations">
+		<ul class="list-group list-group-flush"> 
 			<% if @reservations.present? 
 				@reservations.reverse.each do |r| %>
-					<li><%= link_to "#{r.created_at}   |   Reservation:  #R#{r.id}  |   #{r.size.listing.brand.brand}  |  #{r.size.listing.name}  |  #{number_to_currency(r.size.price)}", r %></li>
+					<li class="list-group-item list-group-item-light"><%= link_to "#{r.created_at}   |  #R#{r.id}  |   #{r.size.listing.brand.brand}  |  #{r.size.listing.name}  |  #{number_to_currency(r.size.price)}", r %></li>
 				<% end %>
 			<% else %>
 				<p> You currently have no reservations</p>

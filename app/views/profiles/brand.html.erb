@@ -7,13 +7,27 @@
 
 <div class="page-container">
 
+	<div class="container-fluid">
+		<div class="buttons">
+			<button type="button" class="btn btn-light"> 
+				<%= link_to "NEW Brand", profiles_stockist_brand_new_path %> 
+			</button>
+			<button type="button" class="btn btn-light"> 
+				<%= link_to "NEW Listing", new_listing_path %> 
+			</button>
+		</div>
+	</div>
+
 	<section class ="stockist_existing_brands">
-		<h3 class="">New Listing</h3>
-		<ul class="existing_brands_list">
-			<% current_user.stockist.brands.each do |sb|%>
-				<li><%= "#{sb.brand}" %></li>
-			<%end%>
-		</ul>
+		<h3 class="">Current Brands</h3></br>
+		<p>* ADD an existing Brand to your Inventory below or create a NEW Brand above.</p></br>
+		<div class="existing_brands_list">
+			<ul class="list-group list-group-flush"> 
+				<% current_user.stockist.brands.each do |sb|%>
+					<li class="list-group-item list-group-item-light"><%= "#{sb.brand}" %></li>
+				<%end%>
+			</ul>
+		</div></br>
 	</section>
 
 
@@ -27,20 +41,9 @@
 		</div>
 
 		<div>
-			<%= f.button :submit, 'Save', class: 'btn btn-light' %>
-		</div>
+			<%= f.button :submit, 'Add Brand', class: 'btn btn-light' %>
+		</div></br>
 		<%end%>
-
-		<div class="container-fluid">
-			<div class="buttons">
-				<button type="button" class="btn btn-light"> 
-					<%= link_to "Create Beans Brand", profiles_stockist_brand_new_path %> 
-				</button>
-				<button type="button" class="btn btn-light"> 
-					<%= link_to "New Listing", new_listing_path %> 
-				</button>
-			</div>
-		</div>
 	</article>
 
 </div>

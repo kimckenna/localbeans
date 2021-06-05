@@ -1,11 +1,17 @@
 <div class="title-container">
 	<div class='title-wrap'>
-		<h1 class="title">Create a Brand</h1>
+		<h1 class="title">New Brand</h1>
 	</div>
 </div>
 
 <div class="page-container">
 	<article class="form-container">
+
+		<button type="button" class="btn btn-light">
+			<%= link_to "ADD Brand", profiles_stockist_brand_path %>
+		</button></br></br>
+		<p>* Before creating a NEW brand, please first check your brand doesn't already exist.</p></br>
+
 		<%= simple_form_for(@brand, as: :brand, method: :post, url: profiles_stockist_brand_path) do |f| %>
 			<%= f.error_notification %>
 			<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -15,9 +21,9 @@
 		</div>
 
 		<div>
-			<%= f.button :submit, 'Save', class: 'btn btn-light' %>
+			<%= f.button :submit, 'New Brand', class: 'btn btn-light' %>
 		</div>
 
-		<% end %>
+		<% end %></br>
 	</article>
 </div>

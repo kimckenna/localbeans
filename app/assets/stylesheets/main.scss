@@ -1,4 +1,3 @@
-@import "./scss_stylesheets/global.scss";
 @import "./scss_stylesheets/fonts.scss";
 @import "./scss_stylesheets/variable.scss";
 @import "./scss_stylesheets/nav.scss";
@@ -94,11 +93,20 @@ li{
 // FORM
 
 // BUTTON
+
+.buttons {
+	margin-bottom: 2vw;
+	button{
+		margin: 1vw;
+	}
+}
+
 .btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
 	background-color: #AEFFB6 !important;
 }
 
 // DELETE BUTTON
+
 .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
 	background-color: #FF636C !important;
 }

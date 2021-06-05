@@ -4,7 +4,7 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-
+    <p>Brand</p>
     <%=f.collection_select :brand_id, current_user.stockist.brands, :id, :brand do |b|%>
       
     <%end%>
@@ -26,13 +26,13 @@
       <%= size_form.input :size %>
       <%= size_form.input :price %>
       <%= size_form.input :active, as: :radio_buttons, wrapper: :vertical_collection_inline%>
-    <%= f.file_field :images, accept: 'image/png, image/jpg, image/jpeg'%>
     <% end %>
     
+    <%= f.file_field :images, accept: 'image/png, image/jpg, image/jpeg'%></br></br>
   </div>
 
   <div>
     <%= f.button :submit, 'Save', class: 'btn btn-light' %>
   </div>
-  <% end %>
+  <% end %></br>
 </article>

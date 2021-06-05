@@ -35,12 +35,13 @@
 	margin: auto;
 }
 
-.form-container{
+.form-container, .existing_brands_list{
 	max-width: 500px;
 	margin: auto;
 }
 
 // SHOW
+
 .show-listing-container{
 	max-height: 1000px;
 	height:25rem;
@@ -51,48 +52,16 @@
 	}
 }
 
+.show-container{
+	margin: 0 auto;
+}
+
 // EDIT
 
 .edit-button{
 	margin-top: 3%;
 }
 
-
-// img{
-// 	width: 60vh;
-// 	max-width: 400px;
-// 	opacity: 85%;
-// 	display: block;
-// 	margin-left: 1rem;
-// 	margin-top: 4rem;
-// }
-
-// img{
-// 	overflow:hidden;
-// }
-
-// .show_listing_img{
-// 	margin: 0 auto;
-// 	padding-top: 7vh;
-// 	overflow: hidden;
-// }
-
-// .card-body{
-// 	padding: 1rem;
-// 	padding-left: 0.5rem;
-// }
-
-// .listing_show_li{
-// 	padding: 0.2rem;
-// }
-
-// .listing_show_button{
-// 	margin-top: 1rem;
-// }
-
-// .custom-card{
-// 	width: 250vh !important;
-// }
 
 .img-fluid{
 	max-width: 90%;

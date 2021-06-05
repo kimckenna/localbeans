@@ -24,10 +24,10 @@
                   <%= f.error_notification %>
                   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-                  <li class="listing_show_li"><%=f.collection_select :grind_id, @grinds, :id, :bean_grind do |b|%></li>
+                  </br><li class="listing_show_li"><%=f.collection_select :grind_id, @grinds, :id, :bean_grind do |b|%></li>
                   <% end %>
 
-                  <li class="listing_show_li"><%=f.collection_select :size_id, @sizes, :id, :size_price do |b|%></li>
+                  <li class="listing_show_li"></br><%=f.collection_select :size_id, @sizes, :id, :size_price do |b|%></li>
                   <% end %>
 
                   <% if current_user.present? && current_user.stockist.present? && current_user.stockist.id == @listing.stockist_id %>
@@ -38,7 +38,7 @@
                   </div>
                     <% else %>  
                     <div class="listing_show_button">
-                      <%= f.button :submit, 'Reserve', class: 'btn btn-light' %>
+                      </br><%= f.button :submit, 'Reserve', class: 'btn btn-light' %>
                     </div>
                   <%end%>
                 <% end %>
