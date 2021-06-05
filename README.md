@@ -10,6 +10,18 @@ https://github.com/kimckenna/localbeans/tree/main
 
 ## PURPOSE
 
+## SITEMAP
+
+<p float="left" align="center">
+  <img src="./docs/Local_Beans_Site_Map.png" alt="Local_Beans_Site_Map" />
+</p>
+
+## LOCAL BEANS ERD
+
+<p float="left" align="center">
+  <img src="./docs/Local_Beans_ERD_T2A2.png" alt="Local_Beans_ERD" />
+</p>
+
 ## FINAL WEBSITE
 
 #### Index Page
@@ -59,3 +71,5 @@ https://github.com/kimckenna/localbeans/tree/main
 <p float="left" align="center">
   <img src="./docs/localbeans_screenshot_live_3.png" alt="index page desktop" />
 </p>
+
+
