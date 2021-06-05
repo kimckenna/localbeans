@@ -1,15 +1,31 @@
-<nav class="navbar navbar-light fixed-top">
-  <div class="container-fluid">
-    <div class="nav">
-				<h6 class="local-beans">Local Beans</h6>
-				<a class="nav_link custom_nav_link"><%= link_to "Home", root_path %> </a>
-				<a class="nav_link custom_nav_link"> <%= link_to "Beans", listings_path %> </a>
-				<% if user_signed_in? %>
-				<a class="nav_link custom_nav_link firstname"> <%= link_to "#{current_user.first_name.capitalize}", profiles_user_path %> </a>
-				<a class="nav_link custom_nav_link"> <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %> </a>
+<nav class="navbar navbar-expand-sm navbar-light fixed-top">
+			<h6 class="local-beans">Local Beans</h6>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav justify-content-end">
+					<li class="nav-item custom_nav_link py-1">
+						<%= link_to "Home", root_path, :class=>"nav-link" %> 
+					</li>
+					<li class="nav-item custom_nav_link py-1"> 
+						<%= link_to "Beans", listings_path, :class=>"nav-link" %> 
+					</li>
+
+					<% if user_signed_in? %>
+						<li class="nav-item custom_nav_link firstname py-1"> 
+							<%= link_to "#{current_user.first_name.capitalize}", profiles_user_path, :class=>"nav-link" %> 
+						</li>
+
+						<li class="nav-item custom_nav_link py-1"> 
+							<%= link_to "Sign Out", destroy_user_session_path, method: "delete", :class=>"nav-link" %> 
+						</li>
 					<% else %>
-				<a class="nav_link custom_nav_link"> <%= link_to "Sign In", new_user_session_path %> </a>
-			<%end%>
-    </div>
-  </div>
+
+						<li class="nav-item custom_nav_link py-1"> 
+							<%= link_to "Sign In", new_user_session_path, :class=>"nav-link"%> 
+						</li>
+					<%end%>
+    		</ul>
+			</div>
 </nav>
