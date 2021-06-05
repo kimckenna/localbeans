@@ -61,9 +61,6 @@ class ListingsController < ApplicationController
   end
 
   def sizes_create
-    #@size = Size.new(size_params)
-    #puts @listing.errors.full_messages
-    #@size = current_user.stockist.listings.size.build(size_params) 
     @listing = Listing.find(params[:id])
     @size = @listing.sizes.new(size_params)
     if @size.save
@@ -73,11 +70,8 @@ class ListingsController < ApplicationController
       render :sizes_new 
     end
   end
-  # Shows listing slected from index
 
   def show
-    # @listing = Listing.find(params[:id])å
-    #Listing.includes(:sizes).where(sizes: {active: TRUE})
     @sizes = @listing.sizes.where(active: TRUE)   
     @grinds = @listing.grinds.all
     if current_user.present?
@@ -101,9 +95,6 @@ class ListingsController < ApplicationController
     params.require(:sizes).permit(:id, :size, :price, :active, :listing_id)
   end
 
-  # def  show_listing_params
-  #   params.require(:listing).permit(sizes_attributes: [:id, :size, :price, :active], grind_ids: [])
-  # end
 
   def set_listing
     @listing = Listing.find(params[:id])
@@ -116,9 +107,5 @@ class ListingsController < ApplicationController
       redirect_to Listing.find(params[:id])
     end
   end
-
-  # def set_listing_size
-    
-  # end
 
 end

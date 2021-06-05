@@ -5,25 +5,28 @@
 </div>
 
 <div class="page-container">
-	<h5><%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %></h5>
+	<div class="profile-info">
+		<div class="profile-text">
+			<h5><%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}" %></h5>
+		</div>
 
-	<div class="container-fluid">
-		<div class="buttons">
-			<% if current_user.stockist.present? %>
+		<div class="container-fluid">
+			<div class="buttons">
+				<% if current_user.stockist.present? %>
+					<button type="button" class="btn btn-light"> 
+						<%= link_to "Stockist Profile", profiles_stockist_path %> 
+					</button>
+						<% else %>
+					<button type="button" class="btn btn-light"> 
+						<%= link_to "Become Stockist", profiles_stockist_new_path %> 
+					</button>
+				<%end%>
 				<button type="button" class="btn btn-light"> 
-					<%= link_to "Stockist Profile", profiles_stockist_path %> 
+						<%= link_to "Edit Profile", edit_user_registration_path %> 
 				</button>
-					<% else %>
-				<button type="button" class="btn btn-light"> 
-					<%= link_to "Become Stockist", profiles_stockist_new_path %> 
-				</button>
-			<%end%>
-			<button type="button" class="btn btn-light"> 
-					<%= link_to "Edit Profile", edit_user_registration_path %> 
-			</button>
+			</div>
 		</div>
 	</div>
-
 	<%= render 'shared/all_reservations' %>
 </div>
 
