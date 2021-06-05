@@ -13,17 +13,16 @@ class ProfilesController < ApplicationController
 
   def stockist
     #@stockist = Listing.find(params[:id]).stockist_id
-    @listing = current_user.stockist.listings.includes(:sizes).with_attached_images
+    @stockist = current_user.stockist
+    @listing = @stockist.listings.includes(:sizes).with_attached_images
     @size = Size.all
-    @address = current_user.stockist.addresses.first
+    @address = @stockist.addresses.first
   end
 
   # New creates a new stockist as each user can only ahve one stockist account and the user account management is already handled by devise
 
   def new
-    #@brands = Brand.all
     @stockist = current_user.build_stockist
-    #@address = Address.new
     @stockist.addresses.build
   end
 
@@ -58,14 +57,12 @@ class ProfilesController < ApplicationController
 
     brand_ids = current_user.stockist.stockist_brands.pluck(:brand_id)
     @brands = Brand.where.not(id: brand_ids)
-
-  
   end
 
   def stockist_brand_add
     @brand = Brand.find(params[:brand][:brand])
-
     current_user.stockist.stockist_brands.create(brand:@brand)
+
     if @brand.save
       redirect_to profiles_stockist_brand_path(@stockist) 
     else
@@ -79,12 +76,10 @@ class ProfilesController < ApplicationController
   end
 
   def brand_create
-  
     @brand = Brand.new(brand_params)
     current_user.stockist.stockist_brands.create(brand:@brand)
     if @brand.save
       redirect_to profiles_stockist_brand_path(@stockist) 
-    
     else
       render :brand_new 
     end

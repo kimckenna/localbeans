@@ -1,26 +1,61 @@
-# README
+# Local Beans 
+## T2A2 - Marketplace App
+#### Kimberly McKenna
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Website:
+https://localbeans.herokuapp.com/
 
-Things you may want to cover:
+### Github Repository:
+https://github.com/kimckenna/localbeans/tree/main
 
-* Ruby version
+## PURPOSE
 
-* System dependencies
+## FINAL WEBSITE
 
-* Configuration
+#### Index Page
 
-* Database creation
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_.png" alt="index page desktop" height="500" />
+</p>
 
-* Database initialization
+#### Listing Page
 
-* How to run the test suite
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_9.png" alt="index page desktop" height="500" />
+</p>
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Show Listing Page
 
-* Deployment instructions
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_9.png" alt="index page desktop" height="500" />
+</p>
 
-* ...
+#### Reserve Page
 
-hello
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_7.png" alt="index page desktop" height="500" />
+</p>
+
+#### User Profile
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_6.png" alt="index page desktop" height="500" />
+</p>
+
+#### Business Profile
+
+<p float="left" align="center">
+  <img src="./docs/ilocalbeans_screenshot_live_5.png" alt="index page desktop" height="500" />
+</p>
+
+#### New Listing - Brands
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_4.png" alt="index page desktop" height="500" />
+</p>
+
+#### New Listing - Edit
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_3.png" alt="index page desktop" height="500" />
+</p>

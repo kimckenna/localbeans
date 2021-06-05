@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
   def index
   
     @listings = current_user.stockist.listings.includes(:sizes).ids
+    #@sizes = Size.where('sizes.listing_id = ?', @listings)
     @sizes = Size.where(listing_id: @listings)
 
     r = Reservation.pluck(:size_id)
@@ -31,13 +32,13 @@ class ReservationsController < ApplicationController
     @reservation = current_user.reservations.last
     @size = Size.find(@reservation.size_id)
     @grind = Grind.find(@reservation.grind_id)
-    @listing = Listing.find(@size.listing_id)
+    @listing = Listing.includes(:stockist).find(@size.listing_id)
   end
 
   def reservation
     @size = Size.find(@reservation.size_id)
     @grind = Grind.find(@reservation.grind_id)
-    @listing = Listing.find(@size.listing_id)
+    @listing = Listing.includes(:stockist).find(@size.listing_id)
   end
 
   def create
@@ -47,7 +48,6 @@ class ReservationsController < ApplicationController
       redirect_to show_reservation_path
     else
       puts @reservation.errors.full_messages
-      #render :index
       redirect_to request.referrer
     end
   end

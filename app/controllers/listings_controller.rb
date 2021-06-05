@@ -22,7 +22,6 @@ class ListingsController < ApplicationController
     @listing = Listing.new
     @brands = Brand.all
     @grinds = Grind.all
-    #@listing.grinds.build
     @listing.sizes.build
   end
 
@@ -32,11 +31,9 @@ class ListingsController < ApplicationController
     @brands = Brand.all
     @grinds = Grind.all
     @listing = current_user.stockist.listings.new(listing_params) 
-    #puts @listing.brand_id
     if @listing.save
       redirect_to listing_path(@listing) 
     else
-      #puts @listing.errors.full_messages
       render :new 
     end
   end
@@ -66,7 +63,6 @@ class ListingsController < ApplicationController
     if @size.save
       redirect_to edit_listing_path
     else
-      #puts @size.errors.full_messages
       render :sizes_new 
     end
   end
@@ -79,6 +75,10 @@ class ListingsController < ApplicationController
     else
       redirect_to new_user_session_path  
     end
+  end
+
+  def destroy
+
   end
 
   private

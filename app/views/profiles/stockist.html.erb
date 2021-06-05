@@ -1,13 +1,13 @@
 <div class="title-container">
 	<div class='title-wrap'>
-		<h1 class="title"><%= "#{current_user.stockist.business_name.capitalize}" %></h1>
+		<h1 class="title"><%= "#{@stockist.business_name.capitalize}" %></h1>
 	</div>
 </div>
 
 <div class="page-container">
 	<div class="profile-info">
 		<div class="profile-text">
-			<h5> <%= "#{@address.stockist_address}" %>
+			<h5> <%= "#{@stockist.addresses.first.stockist_address}" %>
 		</div>
 		<div class="container-fluid">
 			<div class="buttons">
