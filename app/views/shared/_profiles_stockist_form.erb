@@ -14,6 +14,8 @@
       <%= a.input :state, as: :radio_buttons, collection: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA'], wrapper: :vertical_collection_inline, class: 'custom-control-input' %>
       <%= a.input :postcode %>
     <% end %></br>
+
+    <%= f.file_field :images, accept: 'image/png, image/jpg, image/jpeg'%></br></br>
   </div>
 
   <div>

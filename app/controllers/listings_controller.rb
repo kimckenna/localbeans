@@ -77,7 +77,8 @@ class ListingsController < ApplicationController
 
   def show
     # @listing = Listing.find(params[:id])å
-    @sizes = @listing.sizes.all
+    #Listing.includes(:sizes).where(sizes: {active: TRUE})
+    @sizes = @listing.sizes.where(active: TRUE)   
     @grinds = @listing.grinds.all
     if current_user.present?
       @reservation = current_user.reservations.new
