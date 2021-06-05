@@ -6,12 +6,12 @@
     			<% @min_price = listing.sizes.pluck(:price).min %>
 					<div class="col-sm-4 cards-wrap h-100 d-table">
 						<div class="card border-0 align-middle" style="width: 18rem; background-color: #F8F6F3">
-							<div class="h-50">
+							<div class="h-60">
 								<%= listing.images.attached? ? (image_tag listing.images.first , alt:'Stockist Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') : (image_tag 'coffee_default.jpeg', alt:'Default Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') %>
 							</div>
 
 							<div class="card-body">
-								<h5><%= link_to listing.name, listing, class: 'stretched-link' %> </h5>
+								<h6><%= link_to listing.name, listing, class: 'stretched-link' %> </h5>
 								
 								<div>
 									<%= listing.stockist.business_name %> | <%= listing.stockist.addresses.first.suburb%>

@@ -5,7 +5,7 @@
 // LISTINGS
 .title-container{
 	max-height: 300px;
-	height:10rem;
+	height:7rem;
 	margin: auto;
 	.title-wrap{
 		max-width: 1000px;
@@ -14,7 +14,7 @@
 		.title{
 			padding: 1rem;
 			display: inline-block;
-			margin: 3rem 0;
+			margin: 1rem 0;
 		}
 	}
 }
@@ -33,13 +33,13 @@
 .listing-container{
 	max-width: 800px;
 	margin: auto;
-	padding: 1vw;
+	padding: 2vw;
 }
 
 .form-container, .existing_brands_list{
 	max-width: 500px;
 	margin: auto;
-	padding: 1vw;
+	padding: 2vw;
 }
 
 // SHOW
@@ -48,6 +48,7 @@
 	max-height: 1000px;
 	height:25rem;
 	margin: auto;
+	padding: 2vw;
 	.show-listing-wrapper{
 		max-width: 1000px;
 		margin: 0 auto;
@@ -56,6 +57,7 @@
 
 .show-container{
 	margin: 0 auto;
+	padding: 2vw;
 }
 
 // EDIT
@@ -67,11 +69,12 @@
 
 .img-fluid{
 	max-width: 90%;
-	margin: 1vw auto;
+	margin: 1rem auto;
 }
 
 .card-img-top {
 	width: 100%;
+	min-height: 150px;
 	height: 15vw;
 	object-fit: cover;
 }
@@ -88,9 +91,9 @@
 }
 
 .card-body{
-	padding: 3%;
-	padding-top: 5%;
-	margin-bottom: 5%;
+	padding: 6%;
+	padding-top: 6%;
+	margin-bottom: 2%;
 }
 
 
