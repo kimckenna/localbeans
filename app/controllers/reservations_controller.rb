@@ -3,10 +3,20 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:reservation, :destroy]
 
   def index
-    # @reservations = []
-    # @stockist = current_user.stockist.id
-    # @sizes = Size.pluck(:id)where(:listing_id == @stockist)
-    # #@listing = Listing.find(@size.listing_id)
+    @listings = current_user.stockist.listings.includes(:sizes).ids
+    @sizes = Size.where(listing_id: @listings)
+    r = Reservation.pluck(:size_id)
+
+    #@reservations = []
+
+    if @listings.present?
+      @sizes.each do |s|
+        if r.include?(s.id)
+          @reservations = Reservation.where(:size_id == s)
+        end
+      end
+    end  
+
   end
 
   def show
