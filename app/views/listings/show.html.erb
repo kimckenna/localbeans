@@ -1,56 +1,58 @@
-<article class="show-listing-container">
-<div class="card mb-3 border-0 custom-card" style="width: 60%; max-width: 800px; background-color: #FFFBF8;">
-  <div class="row no-gutters">
-    <div class="col-md-5">
-      <div>
-        <%= @listing.images.attached? ? (image_tag @listing.images.first , alt:'Stockist Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') : (image_tag 'coffee_default.jpeg', alt:'Default Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') %>
+<div class="show-container">
+  <article class="show-listing-container">
+  <div class="card mb-3 border-0 custom-card" style="width: 60%; max-width: 800px; background-color: #FFFBF8;">
+    <div class="row no-gutters">
+      <div class="col-md-5">
+        <div>
+          <%= @listing.images.attached? ? (image_tag @listing.images.first , alt:'Stockist Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') : (image_tag 'coffee_default.jpeg', alt:'Default Image', class:'img-fluid width: 100% \5 rounded mx-auto d-block card-img-top') %>
+        </div>
       </div>
-    </div>
-    <div class="col-md-7">
-      <div class="card-body">
-				<h3 class="card-title title"><%= @listing.name %></h3>
-        <ul class="card-text">
-					<li class="listing_show_li"><h5><%= @listing.brand.brand %></h5></li>
-					<li class="listing_show_li">Origin: <%= @listing.origin %></li>
-					<li class="listing_show_li">Type: <%= @listing.bean_type %></li>
-          <li class="listing_show_li">Roast: <%= @listing.roast %></li>
-					<li class="listing_show_li">Flavour Profile: <%= @listing.flavour_profile %></li>
-          <li class="listing_show_li">Additional Notes: <%= @listing.description %></li>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h3 class="card-title title"><%= @listing.name %></h3>
+          <ul class="card-text">
+            <li class="listing_show_li"><h5><%= @listing.brand.brand %></h5></li>
+            <li class="listing_show_li">Origin: <%= @listing.origin %></li>
+            <li class="listing_show_li">Type: <%= @listing.bean_type %></li>
+            <li class="listing_show_li">Roast: <%= @listing.roast %></li>
+            <li class="listing_show_li">Flavour Profile: <%= @listing.flavour_profile %></li>
+            <li class="listing_show_li">Additional Notes: <%= @listing.description %></li>
 
-            <article>
-              <%= simple_form_for @reservation, as: :reservations, method: :post, url: create_reservation_path, 
-                wrapper: :floating_labels_form do |f| %>
-                <%= f.error_notification %>
-                <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+              <article>
+                <%= simple_form_for @reservation, as: :reservations, method: :post, url: create_reservation_path, 
+                  wrapper: :floating_labels_form do |f| %>
+                  <%= f.error_notification %>
+                  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-                <li class="listing_show_li"><%=f.collection_select :grind_id, @grinds, :id, :bean_grind do |b|%></li>
-                <% end %>
+                  <li class="listing_show_li"><%=f.collection_select :grind_id, @grinds, :id, :bean_grind do |b|%></li>
+                  <% end %>
 
-                <li class="listing_show_li"><%=f.collection_select :size_id, @sizes, :id, :size_price do |b|%></li>
-                <% end %>
+                  <li class="listing_show_li"><%=f.collection_select :size_id, @sizes, :id, :size_price do |b|%></li>
+                  <% end %>
 
-                <% if current_user.present? && current_user.stockist.present? && current_user.stockist.id == @listing.stockist_id %>
-                <div class="edit-button">
-                  <button type="button" class="btn btn-light"> 
-                    <%= link_to "Edit Listing", edit_listing_path %> 
-                  </button>
-                </div>
-                  <% else %>  
-                  <div class="listing_show_button">
-                    <%= f.button :submit, 'Reserve', class: 'btn btn-light' %>
+                  <% if current_user.present? && current_user.stockist.present? && current_user.stockist.id == @listing.stockist_id %>
+                  <div class="edit-button">
+                    <button type="button" class="btn btn-light"> 
+                      <%= link_to "Edit Listing", edit_listing_path %> 
+                    </button>
                   </div>
-                <%end%>
-              <% end %>
-            </article>
-        </ul>
+                    <% else %>  
+                    <div class="listing_show_button">
+                      <%= f.button :submit, 'Reserve', class: 'btn btn-light' %>
+                    </div>
+                  <%end%>
+                <% end %>
+              </article>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+  </article>
+
+  <article class="stockist-details">
+    <div>
+
+    </div>
+  </article>
 </div>
-</article>
-
-<article class="stockist-details">
-  <div>
-
-  </div>
-</article>

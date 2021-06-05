@@ -4,18 +4,20 @@
 	</div>
 </div>
 
-<article class="form-container">
-	<%= simple_form_for(@brand, as: :brand, method: :post, url: profiles_stockist_brand_path) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="page-container">
+	<article class="form-container">
+		<%= simple_form_for(@brand, as: :brand, method: :post, url: profiles_stockist_brand_path) do |f| %>
+			<%= f.error_notification %>
+			<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-	<div class="form-inputs">	
-		<%= f.input :brand %>
-	</div>
+		<div class="form-inputs">	
+			<%= f.input :brand %>
+		</div>
 
-	<div>
-    <%= f.button :submit, 'Save', class: 'btn btn-light' %>
-  </div>
+		<div>
+			<%= f.button :submit, 'Save', class: 'btn btn-light' %>
+		</div>
 
-	<% end %>
-</article>
+		<% end %>
+	</article>
+</div>

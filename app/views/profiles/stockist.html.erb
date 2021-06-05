@@ -11,15 +11,15 @@
 		</div>
 		<div class="container-fluid">
 			<div class="buttons">
-				<%# if current_user.stockist.stockist_brands.include?(current_user.stockist.id) %>
+				
 				<button type="button" class="btn btn-light"> 
 					<%= link_to "Beans Brands", profiles_stockist_brand_path %> 
 				</button>
-						<%# else %>
-				<%#end%>
+				
 				<button type="button" class="btn btn-light"> 
 						<%= link_to "Reservations", reservations_path %> 
 				</button>
+				
 				<button type="button" class="btn btn-light"> 
 						<%= link_to "Edit Profile", profiles_stockist_edit_path %> 
 				</button>

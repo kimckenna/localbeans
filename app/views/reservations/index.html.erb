@@ -4,29 +4,6 @@
 	</div>
 </div>
 
-<article class="show-listing-container">
-	<div>
-		<ul>
-			<% if @reservations.present? 
-				@reservations.reverse.each do |r| %>
-					<li><%= link_to "#{r.created_at}   |   Reservation:  #R#{r.id}  |   #{r.size.listing.brand.brand}  |  #{r.size.listing.name}  |  #{number_to_currency(r.size.price)}", r %></li>
-				<% end %>
-			<% else %>
-				<p> You currently have no reservations</p>
-			<% end %>
-		</ul>
-	</div>
-</article>
-
-
-reservations all 
-
-sizes.all where 
-
-
-current_user.stockist.listings.all
-
-
-@listing = current_user.stockist.listings.includes(:sizes).with_attached_images
-
-@reservations = @listing.sizes.reservations
+<div class="page-container">
+	<%= render 'shared/all_reservations' %>
+</div>

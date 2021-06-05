@@ -1,9 +1,15 @@
-<h1>Listings#edit</h1>
-
-<button type="button" class="btn btn-light"> 
-	<%= link_to "Add Size", add_size_path %> 
-</button>
-<div>
+<div class="title-container">
+	<div class='title-wrap'>
+		<h1 class="title">Edit</h1>
+	</div>
 </div>
 
-<%= render 'shared/listing_form', method: :put, url: update_listing_path %>
+<div class="page-container">
+
+	<button type="button" class="btn btn-light"> 
+		<%= link_to "Add Size", add_size_path %> 
+	</button>
+
+	<%= render 'shared/listing_form', method: :put, url: update_listing_path %>
+	
+</div>
