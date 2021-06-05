@@ -1,13 +1,14 @@
 
 <div class="title-container">
 	<div class='title-wrap'>
-		<h1 class="title">Stockist Brands</h1>
+		<h1 class="title">New Listing</h1>
 	</div>
 </div>
 
 <div class="page-container">
 
 	<section class ="stockist_existing_brands">
+		<h3 class="">New Listing</h3>
 		<ul class="existing_brands_list">
 			<% current_user.stockist.brands.each do |sb|%>
 				<li><%= "#{sb.brand}" %></li>
@@ -34,6 +35,9 @@
 			<div class="buttons">
 				<button type="button" class="btn btn-light"> 
 					<%= link_to "Create Beans Brand", profiles_stockist_brand_new_path %> 
+				</button>
+				<button type="button" class="btn btn-light"> 
+					<%= link_to "New Listing", new_listing_path %> 
 				</button>
 			</div>
 		</div>
