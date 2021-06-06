@@ -363,66 +363,91 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 ```
 ## R18 Database Relations
 
+A relational database creates relations through a foreign key pointing to a primary key as a reference; as such the model holding the foreign key belongs to the model holding the primary key.
+
 <p float="left" align="center">
   <img src="./docs/stockists_users.png" alt="index page desktop" />
 </p>
 
 **User Stockist Relationship**
+- A user can have one or zero stockists. 
+- As a user creates a stockist account, so the stockist belongs to one and only one user. 
 
 <p float="left" align="center">
   <img src="./docs/addresses_stockists.png" alt="index page desktop" />
 </p>
 
 **Stockist Addresses Relationship**
+- A stockist can have one or many addresses but must have at least one. 
+- An address belongs to one and only one stockist.
+- As this database is being implemented for Australia and a small project the address model has been intentionally normalised to this degree only.
 
 <p float="left" align="center">
   <img src="./docs/stockists_brands.png" alt="index page desktop"/>
 </p>
 
 **Stockist Brands Relationship**
+- To normalise the relationship between stockist and brands, a stockist can have no, one or many brands and a brand can have no, one or many stockists. 
+- However as a listing must have a brand, a stockist can't have a listing without have a brand. 
+- At the moment a brand will always have at least one stockist as I haven't implemented the ability to remove a brand from the stockist brands but in the furture a brand would have the ability to have no stockists and still exist.
+- As this is a many to many relationship a join table stockist_brands was implemented where a brand or stockist can have many stockist_brands but a stockist_brands can only belong to one stockist and one brand. 
 
 <p float="left" align="center">
   <img src="./docs/stockists_listings.png" alt="index page desktop" />
 </p>
 
 **Stockist Listings Relationship**
+- A stockist can have no, one or many listings.
+- A listing can have and only have one stockist.
 
 <p float="left" align="center">
   <img src="./docs/brands_listings.png" alt="index page desktop" />
 </p>
 
 **Listing Brands Relationship**
+- A brand can have many no, one or many listings.
+- A listing must have one and only one brand.
 
 <p float="left" align="center">
   <img src="./docs/listings_sizes.png" alt="index page desktop"/>
 </p>
 
 **Listing Sizes Relationship**
+- A listing can have many sizes whereas a size can belong to one and only one listing. 
+- This table could have potentially been further normalised, but I have left it to this point as the sizes model is also responsible for the price of a size and whether a size is active which determines whether a listing is active or not and with the expected size of the user database further noramlising this data would have likely made the relationship unnecessarily complicated. 
 
 <p float="left" align="center">
   <img src="./docs/listings_grinds.png" alt="index page desktop"/>
 </p>
 
 **Listing Grinds Relationship**
+- A listing can have one or many grinds and a grind can belong to no, one or many listings.
+- In order to keep the data normalised with a many to many relationship I have a listing_grinds table where a listing or grind can have many listing_grinds but a listing_grinds can only belong to one stockist and one brand. 
 
 <p float="left" align="center">
   <img src="./docs/reservations_grinds.png" alt="index page desktop" />
 </p>
 
 **Grinds Reservations Relationship**
+- A grind can have no, one or many reservations.
+- A reservation can have one and only one grind.
 
 <p float="left" align="center">
   <img src="./docs/sizes_reservations.png" alt="index page desktop"/>
 </p>
 
 **Size Reservations Relationship**
+- A size can have no, one or many reservations.
+- A reservation must have one and only one size. 
+- A reservation uses the size to model to determine the price at reservation. 
 
 <p float="left" align="center">
   <img src="./docs/users_reservations.png" alt="index page desktop" />
 </p>
 
 **User Reservations Relationship**
-
+- A user can have no, one or many reservations. 
+- A reservation can have and only have one user. 
 
 ## R19 Database Schema Design
 
