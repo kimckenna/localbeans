@@ -138,6 +138,58 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 
 ## R12 User Stories
 
+### Visitor
+- As a visitor, I want to be able to view all bean listings 
+- As a visitor, I want to be able to create an account 
+- As a visitor, I want to be able to login to my new account
+
+### User
+- As a user, I want to be able to edit and update my details 
+- As a user, I want to be able to change my password
+- As a user, I want to be able to cancel my account
+- As a user, I want to be able to view a specific listing 
+- As a user, I want to be able to view an image of the product listing
+- As a user, I want to be able to see the brand of the beans 
+- As a user, I want to be able to select my preferred grind type
+- As a user, I want to be able to select an available size of beans to reserve
+- As a user, I want to be able to see the price of the bean sizes
+- As a user, I want to be able to reserve a listing 
+- As a user, I want to be able to see confirmation of my reservation
+- As a user, I want to be able to see all my reservations 
+- As a user, I want to be able to become a stockist
+
+**User Stories not yet achieved**
+- As a user, I want to be able to see the stockist details prior to reserving
+- As a user, I want to be able to search beans based on location 
+- As a user, I want to be able to search beans based on flavour profile
+- As a user, I want to be able to see my reservation price at time of reserving
+- As a user I want to be able to purchase froma verified stockist 
+- As a user I want to be able to add an account image
+- As a user I want to be able to search my reservations
+- As a user I want to be able to save my preferred location
+- As a user I want to be able to reserve multiple bags of the selected coffee beans
+- As a user I want to be able to cancel a reservation
+
+### Stockist
+- As a stockist, I want to be able to edit my account
+- As a stockist, I want to be able to create a listing 
+- As a stockist, I want to be able to add an existing brand to my stockist account
+- As a stockist I want to be able to create a new brand if my brand doesn't exist
+- As a stockist I want to be able select the bean grinds I want my listing available in
+- As a stockist I want to be able to add additional sizes to my listing
+- As a stockist I want to be able to review all reservations made for my listings
+- As a stockist I want to be able to make a size inactive
+- As a stockist I want to be able to add an image of my product
+- As a stockist I want to be able to edit my listing
+
+**Stockist Stories not yet achieved**
+- As a stockist, I want to be able to have a stockist profile, users can visit and view all my available listings 
+- As a stockist I want to be able to search all my listing reservations based on item or date
+- As a stockist I want to be able to cancel a reservation
+- As a stockist I want the ability to remove a listing permenantly
+- As a stockist I want to be able to deactivate an entire listing in one go
+- As a stockist I want to be able to cancel my stockist profile
+
 ## R13 Wireframes
 
 ## R14 ERD
