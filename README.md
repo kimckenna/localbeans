@@ -108,7 +108,7 @@ end
 class Brand < ApplicationRecord
 	has_many :listings, dependent: :destroy
 	has_many :stockist_brands, dependent: :destroy
-  has_many :stockists, through: :stockist_brands, dependent: :destroy
+	has_many :stockists, through: :stockist_brands, dependent: :destroy
 
 	accepts_nested_attributes_for :stockist_brands
 end
@@ -175,7 +175,7 @@ All references, reference the attributes id as a foreign key for the model.
 ```
 	business_name: string
 	abn: integer
-  verified: boolean
+	verified: boolean
 	user: references 
 ```
 *verified is included in schema but not currently being used due to time constraints -intention to have business verified if time allowed for admin implementation*
@@ -201,7 +201,7 @@ brand: references
 #### Brand
 
 ```
-brand: string
+	brand: string
 ```
 
 #### Listing
@@ -220,32 +220,32 @@ brand: string
 #### ListingGrind
 
 ```
-listing: references
-grind: references
+	listing: references
+	grind: references
 ```
 
 #### Grind
 
 ```
-bean_grind: string
+	bean_grind: string
 ```
 
 #### Size
 
 ```
-size: integer
-price: decimal
-active: boolean
+	size: integer
+	price: decimal
+	active: boolean
 ```
 
 #### Reservation
 
 ```
-quantity: integer
-total_price: decimal
-grind: references
-size: references
-user: references
+	quantity: integer
+	total_price: decimal
+	grind: references
+	size: references
+	user: references
 ```
 *quantity & total_price are included in schema but not currently being used due to time constraints - intention to add quantity that could be reserved*
 
