@@ -206,6 +206,8 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 
 ## R13 Wireframes
 
+These wireframes were the launching point for my website. With the time contraint some changes were made for a better experience or based on the contraints of using bootstrap. The tablet layout was intended to be the same as the desktop and would be without margins as a buffer.
+
 <p float="left" align="center">
   <img src="./docs/Desktop_home.png" alt="Local_Beans_ERD" />
 </p>
