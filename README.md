@@ -206,6 +206,54 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 
 ## R13 Wireframes
 
+<p float="left" align="center">
+  <img src="./docs/Desktop_home.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/Desktop_profile.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/Desktop_stockist.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/Desktop_listings.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/Desktop_user_reserve.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/Desktop_listing_edit.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/X1.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/X2.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/X3.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/X4.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/X5.png" alt="Local_Beans_ERD" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/X6.png" alt="Local_Beans_ERD" />
+</p>
+
 ## R14 ERD
 
 <p float="left" align="center">
@@ -237,8 +285,6 @@ The implementation of my stockist uses the same login as a user account so only 
 Once a User is a Stockist they can create many Bean Listings, each bean listing is responsible for one bean item but can reflect different size variations, whilst the grind option is essentially a customisation to the product and these relationships are added when creating the listing. 
  
 When a User reserves a Bean Listing they are considered a User, devise does not differentiate whether they are a stockist or not, only that they aren't the bean listing owner attempting to reserve the product. The reservation controller handles the responsibility of the reservation receipt, and records for both the user and stockist, which are shown through separate views to create a clear definition between 'customer' reservations to collection and stockist 'reservations' to fulfil. The reservation serves as a receipt of the intention to purchase and includes the store information for pickup, the product reserved with grind selection, size and price at time of reservation.
-
-
 
 ## R16 Third Party Services
 
