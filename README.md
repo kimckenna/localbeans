@@ -363,6 +363,70 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 ```
 ## R18 Database Relations
 
+<p float="left" align="center">
+  <img src="./docs/stockists_users.png" alt="index page desktop" />
+</p>
+
+**User Stockist Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/addresses_stockists.png" alt="index page desktop" />
+</p>
+
+**Stockist Addresses Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/stockists_brands.png" alt="index page desktop"/>
+</p>
+
+**Stockist Listings Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/stockists_listings.png" alt="index page desktop" />
+</p>
+
+**User Stockist Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_6.png" alt="index page desktop" />
+</p>
+
+**Listing Brands Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_5.png" alt="index page desktop"/>
+</p>
+
+**Listing Sizes Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_4.png" alt="index page desktop"/>
+</p>
+
+**Listing Grinds Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_3.png" alt="index page desktop" />
+</p>
+
+**Grinds Reservations Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_4.png" alt="index page desktop"/>
+</p>
+
+**Size Reservations Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_3.png" alt="index page desktop" />
+</p>
+
+**User Reservations Relationship**
+
+<p float="left" align="center">
+  <img src="./docs/localbeans_screenshot_live_3.png" alt="index page desktop" />
+</p>
+
 ## R19 Database Schema Design
 
 As default all tables include a primary key id and: 
