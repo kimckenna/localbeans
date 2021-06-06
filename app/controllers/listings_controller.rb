@@ -11,9 +11,26 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listing = Listing.includes(:sizes).where(sizes: {active: TRUE}).with_attached_images
+
+    if params[:query].present?
+      @addresses = Address.search_by_suburb_postcode(params[:query]) 
+
+      if @addresses.present?
+        @stockists = Stockist.includes(:addresses).where(addresses: {id: @addresses.ids})
+  
+        @listing = Listing.includes(:sizes).where(sizes: {active: TRUE}, stockist_id: @stockists.ids).with_attached_images
+
+      else
+        @listing = Listing.includes(:sizes).where(sizes: {active: TRUE}).with_attached_images
+      end 
+    else
+      @listing = Listing.includes(:sizes).where(sizes: {active: TRUE}).with_attached_images
+    end
+
     @size = Size.all
     @stockist = Stockist.all
+    
+  
   end
 
   # New listing page: New listing form with nested attributes allowed for Brand, Grinds and Sizes 

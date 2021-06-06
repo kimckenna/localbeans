@@ -24,8 +24,8 @@
 
 .fix-title{
 	position: fixed;
-	left: 50%;
-	top: 42%;
+	left: 35%;
+	top: 43%;
 }
 
 h1.home-title{
@@ -39,5 +39,12 @@ h1.home-title{
 
 body{
 	height: 100%;
+}
+
+form-control{
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	min-width: 30px !important;
 }
 

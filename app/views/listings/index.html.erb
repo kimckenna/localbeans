@@ -4,7 +4,13 @@
 	</div>
 </div>
 
-
 <div class="page-container">
+
+	<%# <div>
+		<%= form_tag(listings_path, method: :get) do %>
+			<%# text_field_tag(:query, params[:query] )%>
+		<%# end %>
+	<%# </div> %>
+
 	<%= render 'shared/display_all_listings'%>
 </div>

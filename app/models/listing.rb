@@ -1,4 +1,5 @@
 class Listing < ApplicationRecord
+  include PgSearch::Model
   belongs_to :stockist
   belongs_to :brand
   has_many :sizes, dependent: :destroy

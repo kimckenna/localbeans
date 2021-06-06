@@ -386,7 +386,7 @@ All references, reference the attributes id as a foreign key for the model.
 	size: references
 	user: references
 ```
-*quantity & total_price are included in schema but not currently being used due to time constraints - intention to add quantity that could be reserved*
+*quantity is included in schema but not currently being used due to time constraints - intention to add quantity that could be reserved, am still using total_price to track price at time of purchase*
 
 #### Active_Storage_Attachments
 

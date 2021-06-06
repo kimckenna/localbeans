@@ -1,11 +1,11 @@
-<%# <div class="title-container">
-	<div class='title-wrap'>
-		<h1 class="home-title align-middle">Beans</h1>
-	</div>
-</div> %>
-
 <div class="home">
 	<div class="fix-title">
-		<h1 class="home-title align-middle"><%= link_to ".Coffee?", listings_path, :style=>'font-size: 100vw; color: #FFFBF8; opacity: 0%;' %></h1>
+			<div class="home-title form-inputs" style="min-width: 30px;">
+				<%= form_tag listings_path, method: :get do %>
+					<%= text_field_tag :query, params[:query],
+					placeholder: "Suburb or Postcode", class: "form-control", style: "padding-right: 16vw; margin-bottom: 1vw"%>
+					<%= submit_tag "Search Beans", class: 'btn btn-light'%>
+				<% end%>
+			</div>
 	</div>
 </div>
