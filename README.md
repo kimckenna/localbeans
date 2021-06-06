@@ -49,6 +49,7 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 - A bean listing includes the ability for a user to select a particular size based on what the stockist has made available and a bean grind based on the preselected options the stockist has chosen.
 - Only the listing stockist can edit and manage their listing. Due to time constraints at present the stockist only has the ability to make their listing inactive by making the sizes inactive, this way if a size is out of stock they can make the size inactive and still have the listing available for reservation via active sizes, if no sizes are active, the listing won't appear on the bean listing page.
 - Stockists profiles hold all their listings including listings that are inactive. 
+- A bean listing can be searched based on location from the home page.
 
 **Reservations:** 
 - Users are able to make a resrevation of a selected bean with the choice of grind and size. Once reserved they're presented with a reciept and the details of the stockist for collection. 
@@ -133,6 +134,7 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 - AWS S3 (v1.96)
 - Devise Gem v4.8
 - Simple Form Gem
+- PG Search Gem
 - Faker Gem v2.18 (for seeding)
 - Rolify Gem v6.0 (not currently implemented)
 
