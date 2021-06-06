@@ -130,7 +130,7 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 **Deployment**
 - Heroku
 
-**Third Parties and Utilities**
+**Other Third Parties and Utilities**
 - AWS S3 (v1.96)
 - Devise Gem v4.8
 - Simple Form Gem
@@ -212,7 +212,80 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 
 ## R16 Third Party Services
 
+**AWS S3** 
+- The use of the AWS S3 will be implemented to to facilitate cloud storage for any images uploaded by the user, this currently includes stockist images for their profile or listings however the functionality displaying the stockist image has not yet been implemented.
+- A view will render an image through a polymorphic table that makes a request to AWS for the required image. 
+
+**Heroku**
+- Heroku will be used as the cloud service hosting the website as it has free hosting options available and uses postgreSQL. 
+
+**Bootstrap**
+- Bootstrap will be used alongside custom css and scss to provide an efficient front-end design implementation.
+
+### Primary Gems Utilised
+
+**Devise**
+- Devise will be used to handle user authentication. Through devise the user login, edit and delete MVC asnd functionality is provided. 
+- The User model will be adapted slightly to include first_name and last_name and the views will be ammended to create uniformity with the websites other form displays. 
+- Devise provides ```current_user``` which will be used throughout the app to ensure the correct displays are provided based on the user attempting to access them. 
+
+**Simple Form**
+- Simple Form will be used alonside Bootstrap to create simple clean design forms for any create, edit, destroy views or views that require user form input. 
+- Simple Form will reduce the amount of code required by removing the need for labels and utilising the attribute name with the use of ```simple_form_for```.
+
+**PG Search**
+- PG Search will be used to implement a search function for listings. Initially this will be used to query the Address model ```:suburb``` and ```:postcode``` attributes and if time will allow for additional search capabilities within the Listing model. 
+
+**Faker**
+- The Faker gem is used to generate fake data during development, I'm keeping it in there for the purpose of this assessment, but in production I would ordinarily remove the seed data generating the user, stockist and listings that were developed for testing. 
+
 ## R17 Model Relationships: Active Record Associations
+
+- A *user* ```has_one``` *stockist*
+	- A *stockist* ```belongs_to``` one *user*
+
+- A *user* ```has_many``` *reservations*
+	- A *reservation* ```belongs_to``` one *user*
+
+- A *stockist* ```has_many``` *addresses*	
+	- An *address* ```belongs_to``` one *user*
+	- ** the user currently only has the ability to add one address
+
+- A *stockist* ```has_many``` *listings*
+	- A *listing* ```belongs_to``` one *stockist*
+
+- A *stockist* ```has_many``` *stockist_brands*
+	- A *stockist* ```has_many``` *brands* ```through``` *stockist_brands* so a *brand* doesn't belong to a *stockist*
+
+- A *stockist* ```has_one``` *image*
+	- An *image* ```belongs_to``` a polymorphic table 
+
+- An *address* ```has_many``` *listings* ```through``` *stockist*
+
+- A *brand* ```has_many``` *listings*
+	- A *listing* ```belongs_to``` one *brand*
+
+- A *brand* ```has_many``` *stockist_brands*
+	- A *brand* ```has_many``` *stockists* ```through``` *stockist_brands* so a *stockist* doesn't belong to a *brand*
+
+- A *listing* ```has_many``` *sizes*
+	- A *size* ```belongs_to``` one *listing*
+
+- A *listing* ```has_many``` *listing_grinds*
+	- A *listing* ```has_many``` *grinds* ```through``` *listing_grinds* so a *grind* doesn't belong to a *listing*
+
+- A *listing* ```has_many``` *images*
+	- An *image* ```belongs_to``` a polymorphic table
+	- ** the listing currently only displays one image
+
+- A *grind* ```has_many``` *listing_grinds*
+	- A *grind* ```has_many``` *listings* ```through``` *listing_grinds* so a *listing* doesn't belong to a *grind*
+
+- A *grind* ```has_many``` *reservations*
+	- A *reservation* ```belongs_to``` one *grind*
+
+- A *size* ```has_many``` *reservations*
+	- A *reservation* ```belongs_to``` one *size*
 
 ```rb
 	class User < ApplicationRecord
