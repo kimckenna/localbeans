@@ -190,6 +190,14 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 - As a stockist I want to be able to deactivate an entire listing in one go
 - As a stockist I want to be able to cancel my stockist profile
 
+### Privacy: Authentication and Authorisation
+- As a user or stockist I do not want unauthorised users trying to access my details
+- As a user or stockist I do not want unauthorised users trying to access my reservervations
+- As a stockist I do not want unauthorised users being able to edit my listings
+- As a stockist I do not want users to have the ability to see inactive listings
+- As a stockist I do not want to be able to reserve my own listing
+- As a user I want to be able to access my account only when logged in
+
 ## R13 Wireframes
 
 ## R14 ERD
