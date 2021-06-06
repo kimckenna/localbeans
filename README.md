@@ -622,7 +622,7 @@ https://trello.com/b/8gvpJLzF/local-beans
 </p>
 
 <p float="left" align="center">
-  <img src="./docs/trello-6.png" alt="index page desktop" />
+  <img src="./docs/trello_6.png" alt="index page desktop" />
 </p>
 
 <p float="left" align="center">
