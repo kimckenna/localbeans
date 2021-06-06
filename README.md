@@ -55,6 +55,10 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 - Users are able to make a resrevation of a selected bean with the choice of grind and size. Once reserved they're presented with a reciept and the details of the stockist for collection. 
 - Users are able to view all reservations they've made whilst stockists are able to view all reservations made to their listings. A user or stockist is only able to view a reservation if they've made it or it belongs to their listing. 
 
+**Search Location**
+- A very basic location search has been implemented. With more time this would have been further fleshed out with with additional features and implementation on the listings page as well as the home page. 
+- Currently this is only accessible from the home page.
+
 ### SITE MAP
 
 <p float="left" align="center">
@@ -209,6 +213,8 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 </p>
 
 ## R15 Local Beans Abstractions
+
+
 
 ## R16 Third Party Services
 
@@ -589,3 +595,40 @@ All references, reference the attributes id as a foreign key for the model.
 *user_roles is included in schema but not currently being used due to time constraints - intention to add roles for user type and integrate admin*
 
 ## D20 App Management and Task Allocation
+
+#### Trello Board
+https://trello.com/b/8gvpJLzF/local-beans
+
+#### In Progress Screenshots
+
+<p float="left" align="center">
+  <img src="./docs/trello_1.png" alt="index page desktop" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/trello_2.png" alt="index page desktop" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/trello_3.png" alt="index page desktop" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/trello_4.png" alt="index page desktop" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/trello_5.png" alt="index page desktop" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/trello-6.png" alt="index page desktop" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/trello_7.png" alt="index page desktop" />
+</p>
+
+<p float="left" align="center">
+  <img src="./docs/trello_8.png" alt="index page desktop" />
+</p>
