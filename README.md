@@ -3,10 +3,10 @@
 #### Kimberly McKenna
 
 ### R9 Website:
-https://localbeans.herokuapp.com/
+[Local Beans Marketplace Website](https://localbeans.herokuapp.com/)<br>
 
 ### R10 Github Repository:
-https://github.com/kimckenna/localbeans/tree/main
+[Local Beans Github Repository](https://github.com/kimckenna/localbeans/tree/main)<br>
 
 ## R7 The Problem
 
@@ -597,9 +597,52 @@ All references, reference the attributes id as a foreign key for the model.
 ## D20 App Management and Task Allocation
 
 #### Trello Board
-https://trello.com/b/8gvpJLzF/local-beans
+
+[Trello Board - Local Beans Marketplace App](https://trello.com/b/8gvpJLzF/local-beans)<br>
+
+Trello was used to create and manage the project flow of this terminal application and is the best way to ascertain the direction and execution of the build process.
+ 
+### Initial Implementation Plan
+ 
+The intended implementation of Local Beans through Trello was as follows;
+ 
+1. Create tasks in the backlog.
+2. Code MVP features first.
+3. If a bug arises and can be left until MVP works, create a card to fix the error later.
+4. If a bug is preventing MVP element working; set as priority and fix.
+5. When higher priority cards have been implemented, tested and moved to design or done; move the card that is naturally next priority based on current build progress to, To Do so can be looked at next.
+6. Hold partially completed cards within Doing; if get stuck on one task try focusing on another To Do by moving to Doing.
+7. Once the build of the card is completed and the checklist covered, move to Testing then Design if design is required, once design complete, move the task to done.
+8. If bug arises but feature was previously completed, create new Bug card.
+9. If additional functionality or code improvements are thought of during build; create cards in the backlog.
+10. Only start Design Extras or Code Improvements once MVP and all known bugs impacting app have been dealt with.
+11. Use App management for assignment requirements and app set up.
+12. Assign time frame due date to card once moved to doing.
+13. Try to implement in expected time to complete the card based on expected length e.g. short task - green tag, medium task 1-2hrs, long task over 2hrs. Adjust the time assigned based on requirements.
+14. Prioritise feature build based on knowledge and what has the biggest impact on other features.
+ 
+I struggled a lot with the build of this rails app and where to begin and the full extent of what would be required, I had a lot of hold ups and due to personal circumstance was unable to truley dive into the build until just before the original due date. 
+
+As a result I chose to:
+- Set up File structure
+- Start with primary models; user and stockist
+- Build navbar first
+- Whilst trying to implement my controller and views for user and stockist I realised I could better understand what was required by building my full schema with all my known models, controllers and views.
+- My models took me quite a long time as during the build I had to make changes to my models based on the development of my understanding of the best inplementation for my design. 
+- Once my models were done returned to build views related to my stockist. 
+- From here I attempted to begin the build of my views related to listings but had to midway change my brands relationship as I was having issues being able to create a brand during the creation of a listing. 
+- This had me divert to my brands views and adjust the design of my stockist views.  
+- I had errors that would occur during my build where I would need additional help and hold up the remainder of my build as a result some of my design elements were focused on earlier than anticipated. 
+- Once I was able to finish my listing views I moved onto my reservation views. 
+- During my resrevation views build I attempted my first deployment to see what was working this unfortuantely had a few errors which consumed quite a bit of time resolving.
+- Once my deployment was successful I returned to building my reservations and working out why some of my pages weren't showing live but were okay through localhost.
+- Elements of this took me a while to figure out and as a result a lot of my additional features had to be left in order to complete on time.
+- Add Design/ Usability extras or Code Improvements based on level of improvement to MVP
 
 #### In Progress Screenshots
+
+The following screenshots act as an insight into my progress through the build. 
+Part way through the build, I also decided to start moving some of the cards that were in my Doing section and I was stuck on back to To Do so I could try to keep a manageable amount of tasks in my Doing sector for better oversight. 
 
 <p float="left" align="center">
   <img src="./docs/trello_1.png" alt="index page desktop" />
