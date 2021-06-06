@@ -72,6 +72,7 @@ class ListingsController < ApplicationController
     @grinds = @listing.grinds.all
     if current_user.present?
       @reservation = current_user.reservations.new
+
     else
       redirect_to new_user_session_path  
     end

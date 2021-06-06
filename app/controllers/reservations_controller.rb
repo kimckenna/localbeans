@@ -42,8 +42,12 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    puts reservation_params
+    
     @reservation = current_user.reservations.new(reservation_params)
+    @size = Size.find(@reservation.size_id)
+
+    @reservation.total_price = @size.price
+
     if @reservation.save
       redirect_to show_reservation_path
     else
@@ -55,7 +59,7 @@ class ReservationsController < ApplicationController
   private 
 
   def  reservation_params
-    params.require(:reservations).permit(:grind_id, :size_id)
+    params.require(:reservations).permit(:grind_id, :size_id, :total_price)
   end
 
   def set_reservation

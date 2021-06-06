@@ -20,7 +20,7 @@
           <li class="listing_show_li"><%= @listing.roast %></li>
 					<li class="listing_show_li">Grind:  <%= @grind.bean_grind %></li>
           <li class="listing_show_li">Size:  <%= @size.size %>g</li>
-					<li class="listing_show_li">Reserve Price: <%= number_to_currency(@size.price) %></li></br>
+					<li class="listing_show_li">Reserve Price: <%= number_to_currency(@reservation.total_price) %></li></br>
 
 					<li>Pick up:</li></br>
 					<li class="listing_show_li"><h5><%= @listing.stockist.business_name %></h5></li>
