@@ -387,6 +387,7 @@ A relational database creates relations through a foreign key pointing to a prim
 - A stockist can have one or many addresses but must have at least one. 
 - An address belongs to one and only one stockist.
 - As this database is being implemented for Australia and a small project the address model has been intentionally normalised to this degree only.
+- The address is then accessed through the stocking for listings location to be displayed on the listing cards and when a visitor makes a search based on suburb or postcode.
 
 <p float="left" align="center">
   <img src="./docs/stockists_brands.png" alt="index page desktop"/>
@@ -395,8 +396,9 @@ A relational database creates relations through a foreign key pointing to a prim
 **Stockist Brands Relationship**
 - To normalise the relationship between stockist and brands, a stockist can have no, one or many brands and a brand can have no, one or many stockists. 
 - However as a listing must have a brand, a stockist can't have a listing without have a brand. 
-- At the moment a brand will always have at least one stockist as I haven't implemented the ability to remove a brand from the stockist brands but in the furture a brand would have the ability to have no stockists and still exist.
+- At the moment a brand will always have at least one stockist as I haven't implemented the ability to remove a brand from the stockist brands but in the future a brand would have the ability to have no stockists and still exist.
 - As this is a many to many relationship a join table stockist_brands was implemented where a brand or stockist can have many stockist_brands but a stockist_brands can only belong to one stockist and one brand. 
+- All brands are currently creates by users, a user can add any brand that exists to thier own stockist brands or create a new brand if their brand isn't present within the databse.
 
 <p float="left" align="center">
   <img src="./docs/stockists_listings.png" alt="index page desktop" />
@@ -429,6 +431,7 @@ A relational database creates relations through a foreign key pointing to a prim
 **Listing Grinds Relationship**
 - A listing can have one or many grinds and a grind can belong to no, one or many listings.
 - In order to keep the data normalised with a many to many relationship I have a listing_grinds table where a listing or grind can have many listing_grinds but a listing_grinds can only belong to one stockist and one brand. 
+- The grinds are currently created through seeding, so no user is able to add or change them currently unless the seed data is manually changed. 
 
 <p float="left" align="center">
   <img src="./docs/reservations_grinds.png" alt="index page desktop" />
@@ -445,7 +448,7 @@ A relational database creates relations through a foreign key pointing to a prim
 **Size Reservations Relationship**
 - A size can have no, one or many reservations.
 - A reservation must have one and only one size. 
-- A reservation uses the size to model to determine the price at reservation. 
+- A reservation uses the size model to determine the price at reservation, this is created with total_price when the reservation is created and saved. 
 
 <p float="left" align="center">
   <img src="./docs/users_reservations.png" alt="index page desktop" />
@@ -454,6 +457,7 @@ A relational database creates relations through a foreign key pointing to a prim
 **User Reservations Relationship**
 - A user can have no, one or many reservations. 
 - A reservation can have and only have one user. 
+- A user refers to a person reserving the beans, to keep the model normalised, a stockist needs to access any of this listing reservations through listings, through sizes.
 
 ## R19 Database Schema Design
 
