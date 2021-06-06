@@ -65,7 +65,7 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 #### Index Page
 
 <p float="left" align="center">
-  <img src="./docs/localbeans_screenshot_live_2.png" alt="index page desktop" />
+  <img src="./docs/localbeans_screenshot_index.png" alt="index page desktop" />
 </p>
 
 #### Listing Page
@@ -149,6 +149,7 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 - As a user, I want to be able to cancel my account
 - As a user, I want to be able to view a specific listing 
 - As a user, I want to be able to view an image of the product listing
+- As a user, I want to be able to search beans based on location 
 - As a user, I want to be able to see the brand of the beans 
 - As a user, I want to be able to select my preferred grind type
 - As a user, I want to be able to select an available size of beans to reserve
@@ -161,7 +162,6 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 
 **User Stories not yet achieved**
 - As a user, I want to be able to see the stockist details prior to reserving
-- As a user, I want to be able to search beans based on location 
 - As a user, I want to be able to search beans based on flavour profile
 - As a user, I want to be able to purchase froma verified stockist 
 - As a user, I want to be able to add an account image
