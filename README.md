@@ -214,6 +214,30 @@ As a two way marketplace, Local Beans intended audience is coffee lovers or coff
 
 ## R15 Local Beans Abstractions
 
+Local Beans has been built using Ruby on Rails and as a result uses the convention: MVC, separating concerns between the Model, View and Controller. 
+ 
+In an ideal build the View is responsible for what is displayed to the user, the model holds the methods defining the relationships between the data and the controller is responsible for determining the logic required based on the route request.
+ 
+As I tried to normalise a lot of my data and began my build with a larger scope then I was able to achieve, not all my models have controllers and I've tried to define my controllers based on the primary features or focuses of the application and how each model is being used to create the views that controller is responsible for.
+ 
+As a result my primary abstractions are:
+- User
+- Stockist
+- Bean Listing
+- Reservation
+ 
+A User is someone who holds an account and is logged into that account when visiting the site. Through the implementation of Devise a logged in user can be identified to help govern what accesses should be permitted using ```current_user```; preventing unauthorised access. When a visitor attempts to access a view that requires a logged in user, they are prompted with the login screen through ```signed_in?```.
+ 
+The use of ```current_user``` also helps determine if a particular view belongs to the current user and what should be displayed based on that users permitted access, for example if a user visits their own listing, they're provided the option to edit the listing rather than reserve the listing.
+ 
+I have used one controller, Profiles for my stockist and user models, but they represent different abstractions as not all users will be stockists and my stockists model revolves around a stockist having a business name and abn rather than an individual signing up and selling their own beans. 
+ 
+The implementation of my stockist uses the same login as a user account so only one devise login is required for a User and Stockist; meaning Devise doesn't separate the view authorisation between the user and stockist profiles and authorisation scope for both is built around the helper methods provided by Devise.
+ 
+Once a User is a Stockist they can create many Bean Listings, each bean listing is responsible for one bean item but can reflect different size variations, whilst the grind option is essentially a customisation to the product and these relationships are added when creating the listing. 
+ 
+When a User reserves a Bean Listing they are considered a User, devise does not differentiate whether they are a stockist or not, only that they aren't the bean listing owner attempting to reserve the product. The reservation controller handles the responsibility of the reservation receipt, and records for both the user and stockist, which are shown through separate views to create a clear definition between 'customer' reservations to collection and stockist 'reservations' to fulfil. The reservation serves as a receipt of the intention to purchase and includes the store information for pickup, the product reserved with grind selection, size and price at time of reservation.
+
 
 
 ## R16 Third Party Services
