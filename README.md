@@ -75,78 +75,78 @@ https://github.com/kimckenna/localbeans/tree/main
 ## Model Relationships: Active Record Associations
 
 ```rb
-class User < ApplicationRecord
-  has_one :stockist, dependent: :destroy
-  has_many :reservations, dependent: :destroy
+	class User < ApplicationRecord
+		has_one :stockist, dependent: :destroy
+		has_many :reservations, dependent: :destroy
 
-  accepts_nested_attributes_for :stockist
-end
+		accepts_nested_attributes_for :stockist
+	end
 
-class Stockist < ApplicationRecord
-  belongs_to :user
-  has_many :addresses, dependent: :destroy
-  has_many :listings, dependent: :destroy
-  has_many :stockist_brands, dependent: :destroy
-  has_many :brands, through: :stockist_brands, dependent: :destroy
-  has_one :image
-  
-  accepts_nested_attributes_for :stockist_brands, :addresses
-end
+	class Stockist < ApplicationRecord
+		belongs_to :user
+		has_many :addresses, dependent: :destroy
+		has_many :listings, dependent: :destroy
+		has_many :stockist_brands, dependent: :destroy
+		has_many :brands, through: :stockist_brands, dependent: :destroy
+		has_one :image
 
-class Address < ApplicationRecord
-  belongs_to :stockist
-  has_many :listings, through: :stockist
+		accepts_nested_attributes_for :stockist_brands, :addresses
+	end
 
-  enum state: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
-end
+	class Address < ApplicationRecord
+		belongs_to :stockist
+		has_many :listings, through: :stockist
 
-class StockistBrand < ApplicationRecord
-  belongs_to :brand
-  belongs_to :stockist
-end
+		enum state: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
+	end
 
-class Brand < ApplicationRecord
-	has_many :listings, dependent: :destroy
-	has_many :stockist_brands, dependent: :destroy
-	has_many :stockists, through: :stockist_brands, dependent: :destroy
+	class StockistBrand < ApplicationRecord
+		belongs_to :brand
+		belongs_to :stockist
+	end
 
-	accepts_nested_attributes_for :stockist_brands
-end
+	class Brand < ApplicationRecord
+		has_many :listings, dependent: :destroy
+		has_many :stockist_brands, dependent: :destroy
+		has_many :stockists, through: :stockist_brands, dependent: :destroy
 
-class Listing < ApplicationRecord
-  belongs_to :stockist
-  belongs_to :brand
-  has_many :sizes, dependent: :destroy
-  has_many :listing_grinds, dependent: :destroy
-  has_many :grinds, through: :listing_grinds, dependent: :destroy
-  has_many_attached :images
+		accepts_nested_attributes_for :stockist_brands
+	end
 
-  accepts_nested_attributes_for :brand, :sizes, :listing_grinds
+	class Listing < ApplicationRecord
+		belongs_to :stockist
+		belongs_to :brand
+		has_many :sizes, dependent: :destroy
+		has_many :listing_grinds, dependent: :destroy
+		has_many :grinds, through: :listing_grinds, dependent: :destroy
+		has_many_attached :images
 
-  enum bean_type: ['Single Origin', 'Mix Blend', 'Decaf']
-end
+		accepts_nested_attributes_for :brand, :sizes, :listing_grinds
 
-class ListingGrind < ApplicationRecord
-  belongs_to :grind
-  belongs_to :listing
-end
+		enum bean_type: ['Single Origin', 'Mix Blend', 'Decaf']
+	end
 
-class Grind < ApplicationRecord
-  has_many :listing_grinds, dependent: :destroy
-  has_many :listings, through: :listing_grinds, dependent: :destroy
-  has_many :reservations, dependent: :destroy
-end
+	class ListingGrind < ApplicationRecord
+		belongs_to :grind
+		belongs_to :listing
+	end
 
-class Size < ApplicationRecord
-  belongs_to :listing
-  has_many :reservations, dependent: :destroy
-end
+	class Grind < ApplicationRecord
+		has_many :listing_grinds, dependent: :destroy
+		has_many :listings, through: :listing_grinds, dependent: :destroy
+		has_many :reservations, dependent: :destroy
+	end
 
-class Reservation < ApplicationRecord
-  belongs_to :size
-  belongs_to :user
-  belongs_to :grind
-end
+	class Size < ApplicationRecord
+		belongs_to :listing
+		has_many :reservations, dependent: :destroy
+	end
+
+	class Reservation < ApplicationRecord
+		belongs_to :size
+		belongs_to :user
+		belongs_to :grind
+	end
 ```
 
 ## Database Schema Design
@@ -194,8 +194,8 @@ All references, reference the attributes id as a foreign key for the model.
 #### StockistBrand
 
 ```
-stockist: references
-brand: references
+	stockist: references
+	brand: references
 ```
 
 #### Brand
